@@ -1,4 +1,6 @@
+# Allow all search engines full access to crawl the website
 User-agent: *
 Allow: /
 
+# Sitemap Location
 Sitemap: https://hassangul.me/sitemap.xml
