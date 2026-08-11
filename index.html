@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HASSAN.CV // RED WOLF PROTOCOL</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* Import Hacker Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+        
+        body {
+            background-color: #020000;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* Use the font requested in your example for that crisp terminal look */
+            font-family: 'JetBrains Mono', monospace; 
+        }
+
+        /* Custom scrollbar hiding */
+        .no-scrollbar::-webkit-scrollbar {
+            
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Custom selection color */
+        ::selection { background-color: #ef4444; color: black; }
+
+        /* Glitch Animation Keyframes */
+        @keyframes noise { 0%, 100% { transform: translate(0,0); } 10% { transform: translate(-5%,-5%); } 50% { transform: translate(-10%,5%); } 90% { transform: translate(10%,5%); } }
+        @keyframes glitch-anim-1 { 0% { clip: rect(20px, 9999px, 15px, 0); } 100% { clip: rect(50px, 9999px, 60px, 0); } }
+        @keyframes glitch-anim-2 { 0% { clip: rect(10px, 9999px, 80px, 0); } 100% { clip: rect(60px, 9999px, 30px, 0); } }
+        
+        .glitch-layers { position: relative; }
+        .glitch-layers::before, .glitch-layers::after { content: attr(data-text); position: absolute; width: 100%; height: 100%; background: #020000; overflow: hidden; top: 0; }
+        .glitch-layers::before { left: 2px; text-shadow: -1px 0 #ff0000; clip: rect(24px, 550px, 90px, 0); animation: glitch-anim-1 3s infinite linear alternate-reverse; }
+        .glitch-layers::after { left: -2px; text-shadow: -1px 0 #0000ff; clip: rect(85px, 550px, 140px, 0); animation: glitch-anim-2 2.5s infinite linear alternate-reverse; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #000; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #330000; border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        // 1. Import React & ReactDOM from esm.sh
+        import React, { useState, useEffect, useRef } from 'https://esm.sh/react@18.2.0?dev';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client?dev';
+
+        // 2. Import Lucide Icons from esm.sh
+        import { 
+            Terminal, Cpu, Activity, Eye, Shield, Layers, Code, Zap, 
+            Globe, Database, Server, Hash, Wifi, Lock, AlertTriangle, 
+            X, Minimize, Maximize, Crosshair, Linkedin, Github, Mail 
+        } from 'https://esm.sh/lucide-react@0.344.0?dev';
+
+        /* --- APPLICATION LOGIC STARTS HERE --- */
+
+        // --- Hooks & Utilities ---
+
+        const useScramble = (targetText, speed = 30, startDelay = 0) => {
+            const [displayText, setDisplayText] = useState('');
+            const [isComplete, setIsComplete] = useState(false);
+            const chars = '01'; 
+
+            useEffect(() => {
+                let interval;
+                let timeout;
+                const start = () => {
+                    let iteration = 0;
+                    interval = setInterval(() => {
+                        setDisplayText(prev => 
+                            targetText.split("").map((letter, index) => {
+                                if (index < iteration) return targetText[index];
+                                return chars[Math.floor(Math.random() * chars.length)];
+                            }).join("")
+                        );
+                        if (iteration >= targetText.length) { 
+                            clearInterval(interval);
+                            setIsComplete(true);
+                        }
+                        iteration += 1 / 3; 
+                    }, speed);
+                };
+                timeout = setTimeout(start, startDelay);
+                return () => { clearInterval(interval); clearTimeout(timeout); };
+            }, [targetText, speed, startDelay]);
+
+            return { displayText, isComplete };
+        };
+
+        // --- Sub-Components ---
+
+        const CustomCursor = () => {
+            const [pos, setPos] = useState({ x: -100, y: -100 });
+            const [clicked, setClicked] = useState(false);
+
+            useEffect(() => {
+                const move = (e) => setPos({ x: e.clientX, y: e.clientY });
+                const down = () => setClicked(true);
+                const up = () => setClicked(false);
+                window.addEventListener('mousemove', move);
+                window.addEventListener('mousedown', down);
+                window.addEventListener('mouseup', up);
+                return () => {
+                    window.removeEventListener('mousemove', move);
+                    window.removeEventListener('mousedown', down);
+                    window.removeEventListener('mouseup', up);
+                };
+            }, []);
+
+            return (
+                <div className="fixed pointer-events-none z-[100] mix-blend-exclusion hidden md:block" style={{ left: pos.x, top: pos.y, transform: 'translate(-50%, -50%)' }}>
+                    <div className={`w-10 h-10 border border-red-500/80 rounded-full flex items-center justify-center transition-all duration-75 ${clicked ? 'scale-75 bg-red-900/50' : 'scale-100'}`}>
+                        <div className="w-0.5 h-full bg-red-500/50 absolute"></div>
+                        <div className="h-0.5 w-full bg-red-500/50 absolute"></div>
+                        <div className="absolute w-full h-full border border-red-500/30 rounded-full animate-ping"></div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Radar = () => (
+            <div className="w-24 h-24 rounded-full border border-red-900/50 relative overflow-hidden bg-black/50 backdrop-blur-sm">
+                <div className="absolute inset-0 border border-red-900/30 rounded-full opacity-50 scale-50"></div>
+                <div className="absolute inset-0 border border-red-900/30 rounded-full opacity-50 scale-75"></div>
+                <div className="w-1/2 h-1/2 absolute top-0 right-0 bg-gradient-to-t from-transparent to-red-600/40 origin-bottom-left animate-[spin_2s_linear_infinite]" style={{borderTopLeftRadius: '100%'}}></div>
+                <div className="absolute top-2 left-6 w-1 h-1 bg-red-500 rounded-full animate-ping"></div>
+                <div className="absolute bottom-4 right-6 w-1 h-1 bg-red-500 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+            </div>
+        );
+
+        const InteractiveTerminal = () => {
+            const [input, setInput] = useState('');
+            const [history, setHistory] = useState([
+                { type: 'sys', text: "CV-OS KERNEL v4.0.2 DETECTED // LOC: ISLAMABAD, PK" },
+                { type: 'sys', text: "Type 'help' for available commands." }
+            ]);
+            
+            // Bug Fix 3: Use container ref for scrolling instead of scrollIntoView 
+            // to prevent the entire page from jumping when pressing Enter.
+            const containerRef = useRef(null);
+
+            useEffect(() => {
+                if (containerRef.current) {
+                    containerRef.current.scrollTop = containerRef.current.scrollHeight;
+                }
+            }, [history]);
+
+            const handleCommand = (e) => {
+                if (e.key === 'Enter') {
+                    const cmd = input.trim().toLowerCase();
+                    let response = null;
+
+                    switch(cmd) {
+                        case 'help': 
+                            response = "AVAILABLE COMMANDS: help, whoami, scan, skills, contact, clear"; 
+                            break;
+                        case 'whoami': 
+                            response = "USER: MUHAMMAD HASSAN // CLEARANCE: FULL-STACK AI ENGINEER // IP: TRACED"; 
+                            break;
+                        case 'scan': 
+                            response = "SCANNING NETWORK... [||||||||||] 100% // NO THREATS DETECTED."; 
+                            break;
+                        case 'skills':
+                            response = "LOADED MODULES: NEXT.JS, FASTAPI, OPENCV, GEMINI AI, MEDIAPIPE, FIREBASE, NODE.JS.";
+                            break;
+                        case 'contact':
+                            response = "EMAIL: mhassaan.workmail@gmail.com // PHONE: +92-336-5495060 // WEB: reallygreatsite.com";
+                            break;
+                        case 'clear': 
+                            setHistory([]); 
+                            setInput(''); 
+                            return;
+                        default: 
+                            response = `ERROR: COMMAND '${cmd}' NOT RECOGNIZED.`;
+                    }
+                    
+                    if (cmd !== 'clear') {
+                        setHistory(prev => [...prev, { type: 'user', text: `> ${input}` }, { type: 'res', text: response }]);
+                    }
+                    setInput('');
+                }
+            };
+
+            return (
+                <div className="w-full border border-red-900/50 bg-black/90 font-mono text-xs md:text-sm p-2 shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                    <div className="flex items-center justify-between bg-red-950/30 p-1 mb-2 border-b border-red-900/30">
+                        <span className="text-red-500 font-bold flex items-center gap-2"><Terminal size={12}/> ROOT_TERMINAL</span>
+                        <div className="flex gap-1">
+                            <Minimize size={10} className="text-red-500"/>
+                            <Maximize size={10} className="text-red-500"/>
+                            <X size={10} className="text-red-500"/>
+                        </div>
+                    </div>
+                    <div ref={containerRef} className="h-40 overflow-y-auto space-y-1 p-2 custom-scrollbar scroll-smooth">
+                        {history.map((line, i) => (
+                            <div key={i} className={`${line.type === 'user' ? 'text-white' : line.type === 'sys' ? 'text-red-400' : 'text-red-600'}`}>
+                                {line.text}
+                            </div>
+                        ))}
+                        <div className="flex items-center text-red-500">
+                            <span className="mr-2">{'>'}</span>
+                            <input 
+                                type="text" 
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={handleCommand}
+                                className="bg-transparent border-none outline-none flex-1 text-white focus:ring-0"
+                                autoFocus
+                                placeholder="..."
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const SecurityGate = ({ onUnlock }) => {
+            const [progress, setProgress] = useState(0);
+            const [hacking, setHacking] = useState(false);
+
+            useEffect(() => {
+                document.body.style.overflow = 'hidden';
+                return () => {
+                    document.body.style.overflow = '';
+                };
+            }, []);
+
+            const handleOverride = () => {
+                setHacking(true);
+                let p = 0;
+                const interval = setInterval(() => {
+                    p += Math.random() * 5;
+                    if (p >= 100) {
+                        p = 100;
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            // Bug Fix 2: Remove inline hidden overflow carefully to restore native scrolling
+                            document.body.style.overflow = '';
+                            onUnlock();
+                        }, 500);
+                    }
+                    setProgress(p);
+                }, 50);
+            };
+
+            return (
+                <div className="fixed inset-0 z-[60] bg-black/95 flex flex-col items-center justify-center p-4">
+                    <div className="max-w-md w-full border border-red-600 p-8 relative bg-[#050000] shadow-[0_0_50px_rgba(220,38,38,0.3)]">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-red-600"></div>
+                        <div className="absolute bottom-0 left-0 w-full h-1 bg-red-600"></div>
+                        
+                        <AlertTriangle className="w-16 h-16 text-red-600 mx-auto mb-6 animate-bounce" />
+                        <h1 className="text-3xl font-black text-center text-white mb-2 tracking-tighter">ACCESS RESTRICTED</h1>
+                        <p className="text-red-500 font-mono text-center text-sm mb-8">SECURE CONNECTION REQUIRED. UNAUTHORIZED PERSONNEL WILL BE TRACED.</p>
+                        
+                        {/* Bug Fix 1: Fixed height (h-14) applied to the parent container so layout doesn't shift when switching between button and progress bar */}
+                        <div className="h-14 w-full flex items-center justify-center">
+                            {!hacking ? (
+                                <button 
+                                    onClick={handleOverride}
+                                    className="w-full h-full bg-red-700 hover:bg-red-600 text-black font-bold uppercase tracking-[0.2em] transition-all hover:shadow-[0_0_20px_rgba(220,38,38,0.8)] flex items-center justify-center"
+                                    style={{clipPath: 'polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%)'}}
+                                >
+                                    INITIATE OVERRIDE
+                                </button>
+                            ) : (
+                                <div className="space-y-2 w-full">
+                                    <div className="flex justify-between text-xs text-red-500 font-mono">
+                                        <span>INJECTING_PAYLOAD...</span>
+                                        <span>{Math.floor(progress)}%</span>
+                                    </div>
+                                    <div className="w-full h-4 bg-red-900/30 border border-red-900/50">
+                                        <div className="h-full bg-red-600" style={{width: `${progress}%`}}></div>
+                                    </div>
+                                    <div className="text-[10px] text-red-800 font-mono h-4 overflow-hidden text-center">
+                                        {progress > 30 && "BYPASSING_FIREWALL... OK"}
+                                        {progress > 60 && " // DECRYPTING_KEYS... OK"}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    {/* Background Grid */}
+                    <div className="absolute inset-0 pointer-events-none opacity-20" style={{backgroundImage: 'radial-gradient(circle, #330000 1px, transparent 1px)', backgroundSize: '20px 20px'}}></div>
+                </div>
+            );
+        };
+
+        const WolfLogo = ({ className }) => (
+            <div className={`relative ${className}`}>
+                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 20 L50 80 L80 20 L50 35 L20 20Z" fill="#0f0000" stroke="#ef4444" strokeWidth="2" className="animate-[pulse_3s_ease-in-out_infinite]" />
+                    <path d="M50 80 L50 100" stroke="#ef4444" strokeWidth="2" />
+                    <path d="M30 30 L40 50 L50 35 L60 50 L70 30" fill="none" stroke="#ef4444" strokeWidth="1" />
+                    <circle cx="35" cy="40" r="2" fill="#ef4444" className="animate-ping" />
+                    <circle cx="65" cy="40" r="2" fill="#ef4444" className="animate-ping" style={{animationDelay: '0.5s'}} />
+                </svg>
+                <div className="absolute inset-0 bg-red-600/10 animate-pulse mix-blend-overlay"></div>
+            </div>
+        );
+
+        const MatrixRain = () => {
+            const canvasRef = useRef(null);
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                const ctx = canvas.getContext('2d');
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+                const chars = '01';
+                const fontSize = 14;
+                const columns = width / fontSize;
+                const drops = [];
+                for (let x = 0; x < columns; x++) drops[x] = 1;
+                const draw = () => {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    ctx.fillRect(0, 0, width, height);
+                    ctx.font = fontSize + 'px monospace';
+                    for (let i = 0; i < drops.length; i++) {
+                        const redIntensity = Math.random() > 0.98 ? 255 : 80; 
+                        ctx.fillStyle = `rgb(${redIntensity}, 0, 0)`;
+                        ctx.fillText(chars.charAt(Math.floor(Math.random() * chars.length)), i * fontSize, drops[i] * fontSize);
+                        if (drops[i] * fontSize > height && Math.random() > 0.975) drops[i] = 0;
+                        drops[i]++;
+                    }
+                };
+                const interval = setInterval(draw, 33);
+                const handleResize = () => { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; };
+                window.addEventListener('resize', handleResize);
+                return () => { clearInterval(interval); window.removeEventListener('resize', handleResize); };
+            }, []);
+            return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0 opacity-[0.15] pointer-events-none" />;
+        };
+
+        const ScrambleText = ({ text, className = "" }) => {
+            const [display, setDisplay] = useState(text);
+            const chars = "!@#$%^&*()_+-=[]{}|;':,./<>?";
+            const scramble = () => {
+                let iteration = 0;
+                const interval = setInterval(() => {
+                    setDisplay(text.split("").map((letter, index) => {
+                            if (index < iteration) return text[index];
+                            return chars[Math.floor(Math.random() * chars.length)];
+                        }).join(""));
+                    if (iteration >= text.length) clearInterval(interval);
+                    iteration += 1 / 2;
+                }, 30);
+            };
+            return <span onMouseEnter={scramble} className={`cursor-none ${className}`}>{display}</span>;
+        };
+
+        const ScrollSection = ({ children, className = "", delay = 0 }) => {
+            const [isVisible, setIsVisible] = useState(false);
+            const domRef = useRef();
+            useEffect(() => {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => { if(entry.isIntersecting) setIsVisible(true); });
+                }, { threshold: 0.1 });
+                const currentRef = domRef.current;
+                if (currentRef) observer.observe(currentRef);
+                return () => { if(currentRef) observer.unobserve(currentRef); } 
+            }, []);
+            return (
+                <div ref={domRef} style={{ transitionDelay: `${delay}ms` }} className={`transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-10 blur-sm'} ${className}`}>
+                    {children}
+                </div>
+            );
+        };
+
+        // --- Main Application ---
+
+        const App = () => {
+            const [bootSequence, setBootSequence] = useState(true);
+            const [securityLocked, setSecurityLocked] = useState(false);
+            const [bootLog, setBootLog] = useState([]);
+
+            useEffect(() => {
+                const logs = ["INITIALIZING KERNEL...", "LOADING NEURAL MODULES...", "BYPASSING FIREWALL...", "DECRYPTING STORAGE...", "MOUNTING ENV...", "ACCESS GRANTED."];
+                let delay = 0;
+                logs.forEach((log) => {
+                    setTimeout(() => setBootLog(prev => [...prev, log]), delay);
+                    delay += Math.random() * 500 + 200;
+                });
+                const timer = setTimeout(() => {
+                        setBootSequence(false);
+                        setSecurityLocked(true);
+                        setTimeout(() => {
+                            window.scrollTo(0, 0);
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
+                        }, 0);
+                }, 3500);
+                return () => clearTimeout(timer);
+            }, []);
+
+            const skills = [
+                { title: "Computer Vision", icon: <Eye />, desc: "Real-time motion analytics & biomechanical performance insights." },
+                { title: "Generative AI", icon: <Cpu />, desc: "LLM integration & Smart OCR systems." },
+                { title: "Full-Stack Architecture", icon: <Layers />, desc: "Next.js frontends, Tailwind CSS, & creative UI/UX scrollytelling." },
+                { title: "Backend Orchestration", icon: <Server />, desc: "Scalable FastAPI & Node.js optimized for AI inference." },
+                { title: "System Architecture", icon: <Database />, desc: "Bridging deep learning algorithms with intuitive UIs." },
+                { title: "Real-time Processing", icon: <Zap />, desc: "Optimizing pipelines for live inference in high-speed environments." },
+            ];
+
+            const experience = [
+                { role: "Computer Vision Engineer", company: "ID Sports Ventures", date: "Sep 2025 - Present", type: "Full-time", loc: "Islamabad, PK", desc: [
+                    "Design and deploy end-to-end CV pipelines for real-time sports performance analysis.",
+                    "Implement advanced pose estimation and keypoint detection algorithms using MediaPipe.",
+                    "Research and optimize deep learning models for high-speed video data processing."
+                ] },
+                { role: "Full Stack Developer", company: "Oxmite Digital Ltd.", date: "Jun 2025 - Sep 2025", type: "Full-time", loc: "Islamabad, PK", desc: [
+                    "Built scalable FastAPI and Node.js backends optimized for high-concurrency AI inference.",
+                    "Designed RESTful APIs to synchronize Next.js frontends with complex Python-based AI logic.",
+                    "Deployed interactive React components and AI features for production-ready interfaces."
+                ] }
+            ];
+
+            const projects = [
+                { name: "Zen Study AI", tech: "Next.js / FastAPI / Gemini AI", desc: "Built and deployed a high-performance workspace utilizing Gemini AI for Smart OCR and automated MCQ generation." },
+                { name: "Mango Elixir", tech: "Next.js / Tailwind CSS", desc: "Engineered a luxury brand experience using advanced scrollytelling and scroll-triggered animations." },
+                { name: "ZaraiSense", tech: "Firebase / AgriTech AI", desc: "An AI-powered AgriTech platform helping farmers monitor crop health, optimize irrigation, and receive localized advisory." }
+            ];
+
+            const { displayText: headerName } = useScramble("MUHAMMAD HASSAAN", 40, 3800);
+            const { displayText: headerRole } = useScramble("FULL-STACK AI ENGINEER", 20, 5000);
+
+            if (bootSequence) {
+                return (
+                    <div className="bg-black h-screen w-screen flex flex-col items-center justify-center text-red-600 font-mono overflow-hidden relative p-8">
+                        <WolfLogo className="w-24 h-24 mb-8 animate-bounce" />
+                        <div className="w-full max-w-md border border-red-900/50 p-4 bg-black/80 shadow-[0_0_20px_rgba(220,38,38,0.1)]">
+                            <div className="h-64 overflow-hidden flex flex-col justify-end font-mono text-xs">
+                                {bootLog.map((log, i) => <div key={i} className="mb-1 text-red-500"><span className="text-red-800 mr-2">[{new Date().toLocaleTimeString()}]</span>{log}</div>)}
+                                <div className="animate-pulse">_</div>
+                            </div>
+                            <div className="w-full bg-red-900/20 h-1 mt-4"><div className="h-full bg-red-600 animate-[loading_3.5s_ease-in-out_forwards]" style={{width: '0%'}}></div></div>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                // Bug Fix 2: Removed `overflow-x-hidden` from this wrapper container to allow native body scrolling (especially on touchpads)
+                <div className="min-h-screen bg-[#020000] text-gray-300 font-mono selection:bg-red-600 selection:text-black relative cursor-none">
+                    {securityLocked && <SecurityGate onUnlock={() => setSecurityLocked(false)} />}
+                    
+                    <CustomCursor />
+                    <MatrixRain />
+                    
+                    {/* Background FX */}
+                    <div className="fixed inset-0 opacity-[0.04] pointer-events-none z-50 mix-blend-screen animate-[noise_0.2s_infinite]" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`}}></div>
+                    <div className="fixed inset-0 pointer-events-none z-40 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,6px_100%]"></div>
+                    <div className="fixed inset-0 z-0 opacity-20 pointer-events-none" style={{backgroundImage: 'linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px)', backgroundSize: '40px 40px', transform: 'perspective(500px) rotateX(20deg) scale(1.5)'}}></div>
+
+                    {/* Main Content */}
+                    <main className={`relative z-10 container mx-auto px-4 py-8 max-w-6xl transition-all duration-1000 ${securityLocked ? 'blur-md scale-95' : 'blur-0 scale-100'}`}>
+                        
+                        {/* HEADER */}
+                        <header className="border-b border-red-900/40 pb-12 mb-16 relative">
+                            <div className="absolute top-0 right-0 hidden md:flex flex-col gap-4">
+                                <div className="flex items-center gap-2 text-red-500 text-xs animate-pulse border border-red-900/50 px-3 py-1 bg-black/50">
+                                    <Lock size={12} /> SECURE_CONN_ESTABLISHED
+                                </div>
+                                <Radar />
+                            </div>
+                            
+                            <div className="flex flex-col md:flex-row items-center md:items-start gap-10 mt-8">
+                                <div className="relative group">
+                                    <WolfLogo className="w-32 h-32 md:w-48 md:h-48 transition-transform duration-300 group-hover:scale-105" />
+                                    <div className="absolute -inset-4 border border-red-600/20 rounded-full animate-[spin_10s_linear_infinite] border-dashed pointer-events-none"></div>
+                                </div>
+
+                                <div className="flex-1 space-y-6 text-center md:text-left pt-4">
+                                    <div className="inline-flex items-center gap-2 bg-red-950/30 px-3 py-1 text-xs text-red-400 border border-red-900/30 font-bold tracking-widest">
+                                        <Terminal size={12} /> root@cv-engine:~
+                                    </div>
+                                    <div>
+                                        <h1 className="text-4xl md:text-7xl font-black text-white tracking-tighter uppercase mb-2 relative inline-block glitch-layers" data-text={headerName}>{headerName}</h1>
+                                        <h2 className="text-xl md:text-2xl text-red-600 font-bold tracking-[0.2em] flex items-center justify-center md:justify-start gap-3">
+                                            <span className="hidden md:inline-block w-8 h-[2px] bg-red-800"></span> {headerRole}
+                                        </h2>
+                                    </div>
+                                    <div className="max-w-2xl text-sm md:text-lg text-gray-400 leading-relaxed border-l-4 border-red-800 pl-6 py-2 bg-gradient-to-r from-red-900/10 to-transparent relative">
+                                        <span className="text-white font-bold drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">Full-Stack AI Engineer</span> specializing in Computer Vision and Sports Analytics. Expert in architecting end-to-end AI pipelines using <span className="text-white font-bold drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">Next.js, FastAPI, and Generative AI</span>. Focused on bridging deep learning with interactive UI/UX to turn complex data into intuitive, high-performance products.
+                                    </div>
+
+                                    {/* ADDED LINKS SECTION */}
+                                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-6">
+                                        <a href="https://www.linkedin.com/in/its-muhammad-hassan/" target="_blank" rel="noreferrer" className="relative z-20 text-red-500 border border-red-900/50 bg-black/60 px-4 py-2 hover:bg-red-900/40 hover:text-white hover:border-red-500 transition-all text-xs font-bold flex items-center gap-2 cursor-none">
+                                            <Linkedin size={14} /> LINKEDIN
+                                        </a>
+                                        <a href="https://github.com/muhammad-hassaan-0" target="_blank" rel="noreferrer" className="relative z-20 text-red-500 border border-red-900/50 bg-black/60 px-4 py-2 hover:bg-red-900/40 hover:text-white hover:border-red-500 transition-all text-xs font-bold flex items-center gap-2 cursor-none">
+                                            <Github size={14} /> GITHUB
+                                        </a>
+                                        <a href="mailto:mhassaan.workmail@gmail.com" className="relative z-20 text-red-500 border border-red-900/50 bg-black/60 px-4 py-2 hover:bg-red-900/40 hover:text-white hover:border-red-500 transition-all text-xs font-bold flex items-center gap-2 cursor-none">
+                                            <Mail size={14} /> EMAIL
+                                        </a>
+                                    </div>
+                                    
+                                    {/* TERMINAL WIDGET */}
+                                    <div className="w-full max-w-lg mt-8 text-left relative z-20">
+                                        <InteractiveTerminal />
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+
+                        {/* LIVE STATS DASHBOARD */}
+                        <ScrollSection className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+                            {[{icon:Code, l:"Languages", v:"3+"}, {icon:Zap, l:"Processing", v:"REAL-TIME"}, {icon:Database, l:"Architecture", v:"END-TO-END"}, {icon:Wifi, l:"Status", v:"ACTIVE"}].map((s,i) => (
+                                <div key={i} className="bg-black/80 border border-red-900/40 p-6 backdrop-blur-sm group hover:border-red-500 transition-colors relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-2 text-red-900/20 group-hover:text-red-900/50"><s.icon size={40} /></div>
+                                    <div className="text-xs text-red-500 uppercase tracking-widest mb-2 font-bold">{s.l}</div>
+                                    <div className="text-3xl font-black text-white group-hover:text-red-500">{s.v}</div>
+                                    <div className="w-full h-1 bg-red-900/30 mt-4"><div className="h-full bg-red-600 w-full animate-pulse"></div></div>
+                                </div>
+                            ))}
+                        </ScrollSection>
+
+                        {/* CORE ARCHITECTURE */}
+                        <ScrollSection className="mb-24">
+                            <div className="flex items-end gap-4 mb-10 border-b border-red-900/30 pb-4">
+                                <Cpu className="text-red-600 w-8 h-8 animate-pulse" />
+                                <h3 className="text-3xl font-black text-white uppercase tracking-tighter">Core Competencies</h3>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {skills.map((skill, index) => (
+                                    <div key={index} className="group relative bg-[#0a0a0a]/90 p-8 border border-red-900/20 hover:border-red-500 transition-all hover:-translate-y-1 overflow-hidden backdrop-blur-sm cursor-none">
+                                        <div className="absolute inset-0 bg-red-900/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                                        <div className="relative z-10">
+                                            <div className="flex justify-between items-start mb-6">
+                                                <div className="text-red-600 group-hover:scale-110 transition-transform duration-300 p-2 bg-red-950/30 rounded border border-red-900/30">{skill.icon}</div>
+                                                <Hash size={24} className="text-red-900/30 group-hover:text-red-600/50 transition-colors" />
+                                            </div>
+                                            <h4 className="text-xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors"><ScrambleText text={skill.title} /></h4>
+                                            <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed">{skill.desc}</p>
+                                        </div>
+                                        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-red-600 opacity-50 group-hover:opacity-100 transition-all"></div>
+                                        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-red-600 opacity-50 group-hover:opacity-100 transition-all"></div>
+                                    </div>
+                                ))}
+                            </div>
+                        </ScrollSection>
+
+                        {/* DEPLOYED PROTOCOLS / PROJECTS */}
+                        <ScrollSection className="mb-24">
+                            <div className="flex items-end gap-4 mb-10 border-b border-red-900/30 pb-4">
+                                <Globe className="text-red-600 w-8 h-8" />
+                                <h3 className="text-3xl font-black text-white uppercase tracking-tighter">Deployed Protocols</h3>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {projects.map((proj, i) => (
+                                    <div key={i} className="border border-red-900/30 bg-black/60 p-6 hover:border-red-500 transition-colors group relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 w-12 h-12 bg-red-900/10 rounded-bl-full group-hover:bg-red-600/20 transition-colors"></div>
+                                        <div className="text-red-500 font-mono text-xs mb-3 flex items-center gap-2">
+                                            <Code size={12} /> {proj.tech}
+                                        </div>
+                                        <h4 className="text-xl font-bold text-white mb-3 group-hover:text-red-400">{proj.name}</h4>
+                                        <p className="text-sm text-gray-400 leading-relaxed">{proj.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </ScrollSection>
+
+                        {/* SYSTEM LOGS / EXPERIENCE */}
+                        <ScrollSection className="mb-24">
+                            <div className="flex items-end gap-4 mb-10 border-b border-red-900/30 pb-4">
+                                <Shield className="text-red-600 w-8 h-8" />
+                                <h3 className="text-3xl font-black text-white uppercase tracking-tighter">System Logs</h3>
+                            </div>
+                            <div className="space-y-8">
+                                {experience.map((job, i) => (
+                                    <div key={i} className="group flex flex-col md:flex-row gap-6 border-l-2 border-red-900/30 pl-8 relative transition-all hover:border-red-600 hover:pl-10 duration-300">
+                                        <div className="absolute -left-[9px] top-0 w-4 h-4 bg-black border-2 border-red-800 rounded-full group-hover:bg-red-600 group-hover:shadow-[0_0_10px_#ef4444] transition-all"></div>
+                                        <div className="md:w-1/4 font-mono">
+                                            <div className="text-red-500 font-bold text-sm tracking-wider flex items-center gap-2">{job.date}</div>
+                                            <div className="text-xs text-gray-600 mt-1 uppercase">{job.loc}</div>
+                                        </div>
+                                        <div className="flex-1 bg-white/5 p-5 rounded border border-transparent group-hover:border-red-900/30 group-hover:bg-red-900/5 transition-colors cursor-none">
+                                            <h4 className="text-2xl font-bold text-white group-hover:text-red-400 transition-colors">{job.role}</h4>
+                                            <div className="text-gray-400 font-semibold mb-4">{job.company}</div>
+                                            
+                                            <ul className="space-y-2 mb-4">
+                                                {job.desc.map((bullet, idx) => (
+                                                    <li key={idx} className="text-sm text-gray-400 flex items-start gap-2">
+                                                        <span className="text-red-600 mt-1">{'>'}</span> {bullet}
+                                                    </li>
+                                                ))}
+                                            </ul>
+
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black border border-red-900/40 text-xs text-red-500 uppercase tracking-widest">
+                                                <div className="w-1 h-1 bg-red-500 rounded-full animate-ping"></div>{job.type}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </ScrollSection>
+
+                        {/* FOOTER */}
+                        <ScrollSection className="mt-32 pb-20">
+                            <div className="bg-[#0a0a0a] border border-red-800 p-8 relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] pointer-events-none opacity-50"></div>
+                                <div className="absolute top-0 right-0 bg-red-800 text-black text-xs font-bold px-3 py-1 flex items-center gap-2"><AlertTriangle size={12} /> BROADCAST_MSG_v1.0</div>
+                                <p className="font-mono text-red-200/80 italic text-sm md:text-xl leading-relaxed relative z-10">
+                                    "Excellence isn’t an accident—it’s a habit. We often focus on the 'big breaks' or the 'lucky moments,' but the real magic happens in the mundane. <span className="text-white bg-red-700 px-1 font-bold not-italic group-hover:bg-red-600 transition-colors">Excellence is doing it anyway.</span>"
+                                </p>
+                            </div>
+                        </ScrollSection>
+                    </main>
+
+                    <div className="fixed bottom-0 left-0 w-full bg-black border-t border-red-900/50 p-1 z-50 flex items-center gap-2 text-xs font-mono text-red-500 opacity-90">
+                        <span className="text-red-700 ml-2">{'>'}</span><span className="animate-pulse">_</span>
+                        <span className="text-red-900/50 ml-auto mr-2 hidden md:inline">ENCRYPTED CONNECTION // PORT 8080</span>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
