@@ -2,7 +2,7 @@
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-hassangul.me-2f81f7?style=for-the-badge&logo=googlechrome&logoColor=white)](https://hassangul.me/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad%20Hassan%20Gul-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/its-muhammad-hassan)
-[![Email](https://img.shields.io/badge/Email-mhassaan.workmail%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mhassaan.workmail@gmail.com)
+[![Email](https://img.shields.io/badge/Email-muhammadhassangul01%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhammadhassangul01@gmail.com)
 
 **Computer Vision Engineer & AI Specialist**
 
@@ -58,7 +58,7 @@ Automated 2D pose lifting and real-time motion tracking system evaluating athlet
 
 - **Portfolio:** [hassangul.me](https://hassangul.me)
 - **LinkedIn:** [linkedin.com/in/its-muhammad-hassan](https://linkedin.com/in/its-muhammad-hassan)
-- **Email:** [mhassaan.workmail@gmail.com](mailto:mhassaan.workmail@gmail.com)
+- **Email:** [muhammadhassangul01@gmail.com](mailto:muhammadhassangul01@gmail.com)
 
 ---
 *Visit [hassangul.me](https://hassangul.me) to explore my full resume, live project demos, and technical articles.*
