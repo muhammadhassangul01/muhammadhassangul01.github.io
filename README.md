@@ -1,79 +1,64 @@
-# 🏋️‍♂️ AI-Powered Athlete Biomechanics & Pose Estimation Engine
+# 👋 Hi, I'm Muhammad Hassan Gul
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-hassangul.me-2f81f7?style=for-the-badge&logo=googlechrome&logoColor=white)](https://hassangul.me/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad%20Hassan%20Gul-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/its-muhammad-hassan)
-[![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Email](https://img.shields.io/badge/Email-mhassaan.workmail%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mhassaan.workmail@gmail.com)
 
-Automated 2D-to-3D pose lifting and real-time biomechanical analysis engine designed to evaluate athlete joint angles, limb velocities, and execution metrics during high-speed athletic movements.
+**Computer Vision Engineer & AI Specialist**
 
-Developed by **[Muhammad Hassan Gul](https://hassangul.me)** — Computer Vision Engineer specializing in Sports Analytics & Motion Tracking.
+I specialize in building real-time deep learning pipelines, sub-30ms pose estimation engines, and automated biomechanical motion tracking systems for sports analytics.
 
----
-
-## 📌 Key Features
-
-- **Real-Time Keypoint Detection:** Sub-30ms latency for streaming video footage using optimized lightweight pose models.
-- **Robust Motion Blur Handling:** Custom synthetic data generation pipeline to maintain tracking accuracy under extreme velocity.
-- **Biomechanical Metrics Assessment:** Calculates precise angular velocities, joint stress levels, and stance symmetry metrics automatically.
-- **Multi-Object Tracking (MOT):** DeepSORT/ByteTrack integration to handle severe athlete occlusion in dynamic team sports environments.
+🌐 **Official Website & Portfolio:** [https://hassangul.me](https://hassangul.me)
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 🚀 About Me
 
-- **Core Vision Frameworks:** OpenCV, PyTorch, TorchScript, ONNX Runtime
-- **Tracking & Motion:** YOLO, ByteTrack, Optical Flow
-- **Backend Infrastructure:** FastAPI, Docker, CUDA Acceleration
-- **Deployment & Streaming:** RTSP / FFmpeg, AWS EC2
-
-```
-[ Video Input Stream ] ➡️ [ Keypoint Detection ] ➡️ [ Optical Flow & Tracking ]
-                                                            │
-[ Biomechanical Analysis Engine ] ⬅️ [ Synthetic Augmentation ] ┘
-            │
-[ Automated Diagnostic Metrics Report ]
-```
+- 🔬 **Current Role:** Computer Vision Engineer at **ID Sports Ventures**, architecting real-time video analytics and pose tracking software.
+- 🎯 **Core Expertise:** Pose Estimation, Keypoint Detection, Object Tracking (YOLO, ByteTrack), Optical Flow, Biomechanical Metric Extraction.
+- 🛠️ **Tech Stack:** PyTorch, OpenCV, TorchScript, ONNX Runtime, TensorRT, FastAPI, Docker, CUDA, C++.
+- 💼 **Former Role:** Software Engineer at Oxmite Digital Ltd. (Python microservices & cloud optimization).
+- 📍 **Location:** Islamabad, Pakistan (Open to global remote & relocation opportunities).
 
 ---
 
-## 🚀 Quick Start
+## 🛠️ Skills & Technologies
 
-### 1. Prerequisites
-Ensure you have Python 3.10+ and a CUDA-enabled GPU available.
-
-```bash
-git clone https://github.com/mhassaan-workmail/athlete-biomechanics-engine.git
-cd athlete-biomechanics-engine
-```
-
-### 2. Environment Setup
-
-```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\\Scripts\\activate
-
-# Install core dependencies
-pip install -r requirements.txt
-```
-
-### 3. Run Pose Estimation & Analysis Pipeline
-
-```bash
-python main.py --source data/sample_athlete.mp4 --weights weights/pose_model.pth --device cuda:0
-```
+| Category | Technologies & Tools |
+| :--- | :--- |
+| **Computer Vision & AI** | Pose Estimation, Keypoint Detection, YOLO, DeepSORT / ByteTrack, Optical Flow, Action Recognition |
+| **Frameworks & Libraries** | PyTorch, OpenCV, TorchScript, ONNX Runtime, TensorFlow, NumPy, SciPy |
+| **Backend & MLOps** | Python, C++, FastAPI, Docker, CUDA, TensorRT, AWS (EC2, S3), RTSP / FFmpeg |
+| **Engineering Practices** | Clean Code, CI/CD, Microservices, Real-Time Latency Optimization |
 
 ---
 
-## 👤 Author & Contact
+## 🏆 Work Experience Highlights
 
-**Muhammad Hassan Gul**  
-*Computer Vision Engineer & AI Specialist*
+### ⚽ ID Sports Ventures — Computer Vision Engineer
+* **Real-Time Pose Tracking:** Engineered sub-30ms keypoint detection models for edge deployment on live streaming footage.
+* **Biomechanical Metrics:** Built automated 2D pose lifting engines for joint angle & limb velocity calculations.
+* **Multi-Object Tracking:** Integrated ByteTrack/DeepSORT to overcome severe athlete occlusion during dynamic gameplay.
 
-- **Website:** [https://hassangul.me](https://hassangul.me)
+### ⚡ Oxmite Digital Ltd. — Software Engineer
+* Built high-throughput FastAPI backend microservices for image/video processing requests.
+* Containerized core applications using Docker for cloud deployment, boosting code coverage to 85%.
+
+---
+
+## 📌 Featured Project
+
+### 🏋️‍♂️ AI-Powered Athlete Biomechanics Engine
+Automated 2D pose lifting and real-time motion tracking system evaluating athletic joint angles and execution metrics under extreme motion blur.
+* **Stack:** PyTorch, OpenCV, ByteTrack, FastAPI, CUDA, Docker
+
+---
+
+## 📬 Connect With Me
+
+- **Portfolio:** [hassangul.me](https://hassangul.me)
 - **LinkedIn:** [linkedin.com/in/its-muhammad-hassan](https://linkedin.com/in/its-muhammad-hassan)
 - **Email:** [mhassaan.workmail@gmail.com](mailto:mhassaan.workmail@gmail.com)
 
 ---
-*If you find this project useful, feel free to give it a ⭐️ star!*
+*Visit [hassangul.me](https://hassangul.me) to explore my full resume, live project demos, and technical articles.*
