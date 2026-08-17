@@ -493,7 +493,7 @@ em { font-family: var(--font-display); font-style: italic; font-weight: 500; }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 60px 0 30px; }
-.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px; }
 .footer-tagline { color: var(--text-2); font-size: .92rem; margin-top: 16px; max-width: 320px; }
 .footer-col h4 { font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); margin: 0 0 16px; }
 .footer-col a { display: block; color: var(--text-2); padding: 5px 0; font-size: .92rem; }
@@ -523,7 +523,7 @@ em { font-family: var(--font-display); font-style: italic; font-weight: 500; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .skills-grid { grid-template-columns: 1fr; }
     .project-card.featured { flex-direction: column; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: repeat(3, 1fr); }
     .float-chip.chip-2 { right: -4%; }
     .float-chip.chip-1 { left: -4%; }
 }

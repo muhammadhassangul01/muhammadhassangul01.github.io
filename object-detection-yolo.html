@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function () {
+            var t = localStorage.getItem('hg-theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <!-- ======================= PRIMARY META (SEO) ======================= -->
+    <title>YOLO Object Detection Explained — Real-Time Detection</title>
+    <meta name="title" content="YOLO Object Detection Explained — Real-Time Detection">
+    <meta name="description" content="YOLO object detection explained: how You Only Look Once works, its versions, use cases in tracking and sports, and deployment tips for real-time systems.">
+    <meta name="keywords" content="YOLO Object Detection, YOLO Algorithm, Real-Time Object Detection, YOLOv8, Object Detection Models">
+    <meta name="author" content="Muhammad Hassan Gul">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://hassangul.me/object-detection-yolo.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================= OPEN GRAPH / SOCIAL ======================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Muhammad Hassan Gul">
+    <meta property="og:url" content="https://hassangul.me/object-detection-yolo.html">
+    <meta property="og:title" content="YOLO Object Detection Explained — Real-Time Detection">
+    <meta property="og:description" content="YOLO object detection explained: how You Only Look Once works, its versions, use cases in tracking and sports, and deployment tips.">
+    <meta property="og:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="YOLO Object Detection Explained — Real-Time Detection">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hassangul.me/object-detection-yolo.html">
+    <meta name="twitter:title" content="YOLO Object Detection Explained — Real-Time Detection">
+    <meta name="twitter:description" content="YOLO object detection explained: how You Only Look Once works, its versions, use cases in tracking and sports, and deployment tips.">
+    <meta name="twitter:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="YOLO Object Detection Explained — Real-Time Detection">
+
+    <!-- ======================= FAVICON / APP ICONS ======================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- ======================= PERFORMANCE: FONTS & RESOURCES ======================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- ======================= STYLESHEETS ======================= -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- ======================= STRUCTURED DATA ======================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hassangul.me/" },
+        { "@type": "ListItem", "position": 2, "name": "YOLO Object Detection", "item": "https://hassangul.me/object-detection-yolo.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "YOLO Object Detection Explained — Real-Time Detection",
+      "url": "https://hassangul.me/object-detection-yolo.html",
+      "description": "YOLO object detection explained: one-stage detection, model versions, tracking use cases and real-time deployment.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Muhammad Hassan Gul — Portfolio", "url": "https://hassangul.me/" },
+      "about": {
+        "@type": "Person",
+        "name": "Muhammad Hassan Gul",
+        "jobTitle": "Computer Vision Engineer",
+        "url": "https://hassangul.me/"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is YOLO object detection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "YOLO (You Only Look Once) is a family of single-stage object detection models that predict bounding boxes and class labels in one forward pass, making them fast enough for real-time video applications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does YOLO work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "YOLO divides the image into a grid and predicts bounding boxes, objectness scores and class probabilities per cell in a single pass, then applies non-maximum suppression to remove duplicate detections."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which YOLO version should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Newer versions like YOLOv8 offer better accuracy, anchor-free design and an easy training API. The right choice depends on your latency budget and hardware, since smaller variants trade accuracy for speed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is YOLO used with object tracking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A YOLO detector provides per-frame bounding boxes, and a tracker like ByteTrack assigns consistent IDs to those boxes across frames — together they keep track of every object through occlusion and crowd scenes."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="nav" id="siteNav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <a href="./" class="logo" aria-label="Muhammad Hassan Gul — home">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                </span>
+                <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./#about" class="nav-link">About</a></li>
+                <li><a href="./#skills" class="nav-link">Skills</a></li>
+                <li><a href="./#experience" class="nav-link">Experience</a></li>
+                <li><a href="./#projects" class="nav-link">Projects</a></li>
+                <li><a href="./#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+                </button>
+                <a href="./#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="./#about">About</a>
+            <a href="./#skills">Skills</a>
+            <a href="./#experience">Experience</a>
+            <a href="./#projects">Projects</a>
+            <a href="./#faq">FAQ</a>
+            <a href="./#contact" class="btn btn-primary btn-block">Hire Me</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ======================= PAGE HERO ======================= -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span class="current">YOLO Object Detection</span>
+                </nav>
+                <h1>YOLO Object Detection Explained</h1>
+                <p class="lead">A practical guide to YOLO — the real-time object detection family Hassan pairs with ByteTrack for multi-object tracking.</p>
+                <div class="topic-pills">
+                    <span class="tag">Real-Time Detection</span>
+                    <span class="tag">YOLOv8</span>
+                    <span class="tag">Object Tracking</span>
+                    <span class="tag">Edge Deployment</span>
+                    <span class="tag">Sports AI</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container content-grid">
+                <article class="prose">
+                    <h2>What is Object Detection?</h2>
+                    <p>Object detection is the computer vision task of finding <strong>every object of interest in an image and drawing a bounding box around it</strong>, labeled with a class. Unlike classification, which asks "what is in this image?", detection asks "what is where?" — it returns multiple boxes, each with coordinates and a category.</p>
+                    <p>In my pipelines, detection is the front door. Before I can track a player, score a drill or analyze posture, I need to know that there is a person in this region of the frame — and a bounding box is the most reliable, cheap way to get that answer at high frame rates.</p>
+
+                    <h2>Why YOLO: One-Stage Detection</h2>
+                    <p>Detectors fall into two broad camps. <strong>Two-stage</strong> methods first propose candidate regions, then classify each one — accurate, but slow. <strong>One-stage</strong> methods like YOLO (You Only Look Once) predict boxes and classes directly in a single forward pass, trading a little accuracy for a lot of speed.</p>
+                    <p>That trade is exactly what real-time systems need. At <strong>ID Sports Ventures</strong>, I work against a <strong>sub-30ms inference budget</strong> on streaming footage. YOLO is the workhorse that fits — it's why I reach for it as the detection stage before <a href="multi-object-tracking-bytetrack.html">ByteTrack</a> assigns identities to every athlete.</p>
+
+                    <h2>How YOLO Works</h2>
+                    <p>YOLO treats detection as a single regression problem. The image is divided into a grid, and each grid cell predicts candidate bounding boxes, an <strong>objectness score</strong> (how likely an object is inside), and class probabilities. One glance — one forward pass — produces the full set of detections.</p>
+                    <p>Because the grid can produce multiple boxes around the same object, a post-processing step called <strong>non-maximum suppression (NMS)</strong> keeps the strongest box and removes the overlapping duplicates. The model outputs survive to this step as tensors, which is where the deployment chain — <a href="pytorch-for-computer-vision.html">PyTorch</a> export to TorchScript or ONNX Runtime, then TensorRT — takes over.</p>
+
+                    <h2>YOLO Versions</h2>
+                    <p>The YOLO family has evolved a lot. Early versions introduced the grid-based idea; later ones added anchor boxes, feature pyramids and CSP backbones. Modern releases like <strong>YOLOv8</strong> are anchor-free, which simplifies the head and improves generalization, and ship with a clean training API that makes fine-tuning on custom data straightforward.</p>
+                    <p>My rule of thumb: pick the newest stable version that fits your latency budget, then pick the smallest variant that holds your accuracy. For athlete detection in wide-angle sports footage, I typically start with a mid-size variant, fine-tune on the actual venue and camera, then quantize for edge deployment — a workflow detailed in the <a href="edge-ai-inference.html">edge AI inference</a> guide.</p>
+
+                    <h2>YOLO + Tracking</h2>
+                    <p>Detection alone is stateless — it gives you boxes per frame but no identity across frames. That's where tracking comes in. I pair <strong>YOLO with ByteTrack</strong> so every detection box is matched to a persistent track ID. The result: the same player keeps the same number from frame to frame, through movement, contact and occlusion.</p>
+                    <p>This combination is the backbone of automated game analysis. Once an athlete has a stable identity, you can compute their position over time, derive speed and distance, and tie <a href="pose-estimation.html">pose estimation</a> keypoints to the right person. The mechanics of keeping those IDs stable are covered in the <a href="multi-object-tracking-bytetrack.html">ByteTrack guide</a>.</p>
+
+                    <h2>Deploying YOLO at the Edge</h2>
+                    <p>Training a model is only half the job — shipping it is where real-time systems live or die. For live sports footage I optimize the pipeline end to end:</p>
+                    <ul class="check-list">
+                        <li><strong>Export cleanly</strong> — PyTorch → TorchScript or ONNX Runtime with fixed shapes.</li>
+                        <li><strong>Accelerate with TensorRT</strong> — FP16 or INT8 precision tuned for the target GPU.</li>
+                        <li><strong>Trim preprocessing</strong> — letterboxing and normalization kept off the critical path.</li>
+                        <li><strong>Bind with FastAPI + Docker</strong> — a containerized inference service with a clean HTTP contract.</li>
+                    </ul>
+                    <p>The same recipe that keeps athlete tracking at streaming speed also serves manufacturing and security pipelines. Getting the deployment right is what separates a demo from a product.</p>
+
+                    <h2>Getting Started with YOLO</h2>
+                    <p>Start with a pretrained model on a public dataset, run it on a sample video, then fine-tune on your own labeled frames. Label with tight boxes, keep classes consistent and evaluate on a held-out split — not on training data. Iterate on the smallest variant that meets accuracy before adding quantization.</p>
+                    <blockquote>“YOLO is the workhorse behind every real-time system I ship — detection first, then tracking, then whatever insight the domain needs.” — Muhammad Hassan Gul</blockquote>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="side-card">
+                        <h3>About Hassan</h3>
+                        <div class="side-profile">
+                            <img src="assets/img/profile.webp" alt="Muhammad Hassan Gul" width="56" height="56" loading="lazy">
+                            <div>
+                                <strong>Muhammad Hassan Gul</strong>
+                                <span>Computer Vision Engineer</span>
+                            </div>
+                        </div>
+                        <p>Islamabad, Pakistan · Open to remote &amp; relocation.</p>
+                    </div>
+                    <div class="side-card">
+                        <h3>Related Roles</h3>
+                        <div class="side-links">
+                            <a href="object-tracking-engineer.html">Object Tracking Engineer</a>
+                            <a href="edge-ai-engineer.html">Edge AI Engineer</a>
+                            <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Core Topics</h3>
+                        <div class="side-links">
+                            <a href="multi-object-tracking-bytetrack.html">Multi-Object Tracking</a>
+                            <a href="computer-vision.html">Computer Vision Guide</a>
+                            <a href="real-time-video-analytics.html">Real-Time Video Analytics</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Hire Hassan</h3>
+                        <p>Open to full-time, contract and consulting engagements worldwide.</p>
+                        <a href="./#contact" class="btn btn-primary btn-sm btn-block">Let's Talk</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================= RELATED ======================= -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-tag">Related</span>
+                    <h2 class="section-title">Explore related <em>topics</em></h2>
+                </div>
+                <div class="related-grid">
+                    <a class="related-card" href="multi-object-tracking-bytetrack.html">
+                        <strong>Multi-Object Tracking with ByteTrack</strong>
+                        <p>Keeping consistent identities on every athlete through severe occlusion.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="object-tracking-engineer.html">
+                        <strong>Object Tracking Engineer</strong>
+                        <p>The role behind stable IDs, occlusion handling and movement analytics.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="real-time-video-analytics.html">
+                        <strong>Real-Time Video Analytics</strong>
+                        <p>RTSP ingestion, frame processing and metrics emitted at streaming speed.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision.html">
+                        <strong>What is Computer Vision?</strong>
+                        <p>A practical introduction to how machines see, detect, track and understand visual data.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="edge-ai-inference.html">
+                        <strong>Edge AI Inference</strong>
+                        <p>Optimizing models with TensorRT and ONNX Runtime to run on-device at speed.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision-engineer.html">
+                        <strong>Computer Vision Engineer</strong>
+                        <p>Designing and shipping real-time vision systems for production workloads.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Need a real-time detection pipeline?</h2>
+                        <p>From YOLO fine-tuning to TensorRT deployment — I'll help you ship detection that runs at streaming speed.</p>
+                    </div>
+                    <a href="mailto:muhammadhassangul01@gmail.com" class="btn btn-primary">Email Hassan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="./" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                    </span>
+                    <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+                </a>
+                <p class="footer-tagline">Computer Vision Engineer &amp; AI Specialist. Building machines that see, track and understand human performance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="./#about">About</a>
+                <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                <a href="resume.html">Resume &amp; CV</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:muhammadhassangul01@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/its-muhammad-hassan" target="_blank" rel="me noopener">LinkedIn</a>
+                <a href="https://github.com/muhammadhassangul01" target="_blank" rel="me noopener">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Islamabad, Pakistan</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> Muhammad Hassan Gul. All rights reserved.</p>
+            <a href="#top" class="back-top" id="backTop" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="assets/js/pages.js" defer></script>
+</body>
+</html>

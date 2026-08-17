@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function () {
+            var t = localStorage.getItem('hg-theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <!-- ======================= PRIMARY META (SEO) ======================= -->
+    <title>Object Tracking Engineer — YOLO &amp; ByteTrack Multi-Object Tracking</title>
+    <meta name="title" content="Object Tracking Engineer — YOLO &amp; ByteTrack Multi-Object Tracking">
+    <meta name="description" content="Object tracking engineer for multi-object tracking (MOT) with YOLO and ByteTrack. Maintains consistent identities through severe occlusion in live video.">
+    <meta name="keywords" content="Object Tracking Engineer, Multi-Object Tracking, MOT Engineer, YOLO Tracking, ByteTrack">
+    <meta name="author" content="Muhammad Hassan Gul">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://hassangul.me/object-tracking-engineer.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================= OPEN GRAPH / SOCIAL ======================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Muhammad Hassan Gul">
+    <meta property="og:url" content="https://hassangul.me/object-tracking-engineer.html">
+    <meta property="og:title" content="Object Tracking Engineer — Muhammad Hassan Gul">
+    <meta property="og:description" content="Object tracking engineer for multi-object tracking with YOLO and ByteTrack — consistent identities through severe occlusion in live video.">
+    <meta property="og:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Muhammad Hassan Gul — Object Tracking Engineer">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hassangul.me/object-tracking-engineer.html">
+    <meta name="twitter:title" content="Object Tracking Engineer — Muhammad Hassan Gul">
+    <meta name="twitter:description" content="Multi-object tracking with YOLO and ByteTrack that keeps consistent identities through severe occlusion.">
+    <meta name="twitter:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="Muhammad Hassan Gul — Object Tracking Engineer">
+
+    <!-- ======================= FAVICON / APP ICONS ======================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- ======================= PERFORMANCE: FONTS & RESOURCES ======================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- ======================= STYLESHEETS ======================= -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- ======================= STRUCTURED DATA ======================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hassangul.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Object Tracking Engineer", "item": "https://hassangul.me/object-tracking-engineer.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Object Tracking Engineer — YOLO & ByteTrack Multi-Object Tracking",
+      "url": "https://hassangul.me/object-tracking-engineer.html",
+      "description": "Object tracking engineer for multi-object tracking (MOT) with YOLO and ByteTrack — maintaining consistent identities through severe occlusion in live video.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Muhammad Hassan Gul — Portfolio", "url": "https://hassangul.me/" },
+      "about": {
+        "@type": "Person",
+        "name": "Muhammad Hassan Gul",
+        "jobTitle": "Object Tracking Engineer",
+        "url": "https://hassangul.me/"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is multi-object tracking (MOT)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multi-object tracking detects every object of interest in each frame and then links detections across frames into trajectories, assigning each one a stable identity. It answers not just 'what is here' but 'who is this and where have they been'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does ByteTrack differ from other trackers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ByteTrack associates every detection — including low-confidence ones — rather than discarding them. By matching high- and low-score boxes separately it recovers occluded objects other trackers lose, which is exactly what dense sports scenes demand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle severe occlusion in tracking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Through robust association: motion prediction with Kalman filters bridges short gaps, low-confidence detections keep occluded targets alive, and appearance features re-identify players once they reappear. Hassan tunes these mechanisms for real match footage, not just benchmarks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the applications of object tracking in sports?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Consistent per-player IDs unlock automated scoring, drill assessment, possession analysis and workload tracking. When every player keeps their identity through occlusion, downstream sports analytics can attribute every action to the right athlete."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="nav" id="siteNav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <a href="./" class="logo" aria-label="Muhammad Hassan Gul — home">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                </span>
+                <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./#about" class="nav-link">About</a></li>
+                <li><a href="./#skills" class="nav-link">Skills</a></li>
+                <li><a href="./#experience" class="nav-link">Experience</a></li>
+                <li><a href="./#projects" class="nav-link">Projects</a></li>
+                <li><a href="./#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+                </button>
+                <a href="./#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="./#about">About</a>
+            <a href="./#skills">Skills</a>
+            <a href="./#experience">Experience</a>
+            <a href="./#projects">Projects</a>
+            <a href="./#faq">FAQ</a>
+            <a href="./#contact" class="btn btn-primary btn-block">Hire Me</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ======================= PAGE HERO ======================= -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span class="current">Object Tracking Engineer</span>
+                </nav>
+                <h1>Object Tracking Engineer</h1>
+                <p class="lead">Hassan builds multi-object tracking systems (YOLO + ByteTrack) that keep consistent identities on every player through severe occlusion.</p>
+                <div class="topic-pills">
+                    <span class="tag">Multi-Object Tracking</span>
+                    <span class="tag">YOLO</span>
+                    <span class="tag">ByteTrack</span>
+                    <span class="tag">DeepSORT</span>
+                    <span class="tag">Sports Analytics</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container content-grid">
+                <article class="prose">
+                    <h2>What is Multi-Object Tracking?</h2>
+                    <p>Multi-object tracking (MOT) goes a step beyond detection. Detection asks <em>where objects are</em> in one frame; tracking asks <em>who each object is across time</em>. Every player, ball or vehicle gets a persistent identity that survives from frame to frame — the foundation for any analytics built on trajectories rather than snapshots.</p>
+                    <p>Hassan has specialized in exactly this problem for sports. At <strong>ID Sports Ventures</strong> in Berlin, his tracking systems keep every athlete's ID intact through the chaos of live play — the hard case that decides whether a sports product works. Read the deep dive on <a href="multi-object-tracking-bytetrack.html">ByteTrack multi-object tracking</a> for the technical mechanics.</p>
+
+                    <h2>Detection + Association</h2>
+                    <p>Every tracker is two problems chained together. First, <strong>detection</strong>: finding each object each frame. Second, <strong>association</strong>: deciding which new detections continue which existing tracks. The second problem is where identity survives or dies.</p>
+                    <p>Association blends motion prediction, appearance features and detection confidence. Kalman filters predict where a player should be next; appearance models re-identify them after occlusion; and score thresholds decide how aggressively to link or kill tracks. Get the fundamentals from <a href="object-detection-yolo.html">YOLO object detection</a>.</p>
+
+                    <div class="kpi-row">
+                        <div class="kpi"><strong>YOLO</strong><span>Detection backbone</span></div>
+                        <div class="kpi"><strong>ByteTrack</strong><span>Association engine</span></div>
+                        <div class="kpi"><strong>ID</strong><span>Per-player identity</span></div>
+                    </div>
+
+                    <h2>YOLO &amp; ByteTrack in Practice</h2>
+                    <p>Hassan pairs <strong>YOLO</strong> for real-time detection with <strong>ByteTrack</strong> for association. ByteTrack's defining idea is that <em>every</em> detection matters: instead of throwing away low-confidence boxes, it associates them too, recovering objects that other trackers write off.</p>
+                    <p>In a dense field of similar-looking players, that distinction is everything. Low-confidence boxes often mean a partially occluded athlete — exactly the case where a naive tracker drops the ID and the downstream analytics break. When appropriate, appearance features extend the pipeline, drawing on <a href="computer-vision.html">computer vision</a> fundamentals.</p>
+
+                    <h2>Handling Severe Occlusion</h2>
+                    <p>Occlusion is the tracker's ultimate test: one player walks in front of another and the two boxes merge or one vanishes. Hassan's systems survive this through layered defenses:</p>
+                    <ul class="check-list">
+                        <li><strong>Motion prediction</strong> — Kalman filtering keeps a track alive when its detection flickers out.</li>
+                        <li><strong>Low-score association</strong> — ByteTrack-style matching recovers partially hidden players.</li>
+                        <li><strong>Appearance re-identification</strong> — feature embeddings re-link a player after full occlusion.</li>
+                        <li><strong>Tuned for sports</strong> — thresholds calibrated on real match footage, not clean benchmarks.</li>
+                    </ul>
+
+                    <h2>Sports Applications</h2>
+                    <p>With stable identities, everything downstream becomes possible. <strong>Automated scoring</strong> attributes each event to the right player; <strong>drill assessment</strong> measures how individuals move through a designed exercise; possession, workload and team shape analysis all rest on knowing who is who.</p>
+                    <p>These are the capabilities behind the <a href="sports-analytics.html">sports analytics</a> work Hassan ships — and the reason teams pair him with <a href="pose-estimation-engineer.html">pose estimation</a> to build complete athlete-analysis products. For the career picture, see <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>.</p>
+                    <blockquote>“Tracking is where detection becomes intelligence — keeping every player's identity alive through occlusion is what makes analytics trustworthy.” — Muhammad Hassan Gul</blockquote>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="side-card">
+                        <h3>About Hassan</h3>
+                        <div class="side-profile">
+                            <img src="assets/img/profile.webp" alt="Muhammad Hassan Gul" width="56" height="56" loading="lazy">
+                            <div>
+                                <strong>Muhammad Hassan Gul</strong>
+                                <span>Object Tracking Engineer</span>
+                            </div>
+                        </div>
+                        <p>Islamabad, Pakistan · Open to remote &amp; relocation.</p>
+                    </div>
+                    <div class="side-card">
+                        <h3>Related Roles</h3>
+                        <div class="side-links">
+                            <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                            <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                            <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Core Topics</h3>
+                        <div class="side-links">
+                            <a href="multi-object-tracking-bytetrack.html">ByteTrack MOT</a>
+                            <a href="object-detection-yolo.html">YOLO Object Detection</a>
+                            <a href="sports-analytics.html">Sports Analytics</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Hire Hassan</h3>
+                        <p>Open to full-time, contract and consulting engagements worldwide.</p>
+                        <a href="./#contact" class="btn btn-primary btn-sm btn-block">Let's Talk</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================= RELATED ======================= -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-tag">Related</span>
+                    <h2 class="section-title">Explore related <em>topics</em></h2>
+                </div>
+                <div class="related-grid">
+                    <a class="related-card" href="multi-object-tracking-bytetrack.html">
+                        <strong>ByteTrack MOT</strong>
+                        <p>How ByteTrack's every-detection association keeps identities alive under occlusion.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="object-detection-yolo.html">
+                        <strong>YOLO Object Detection</strong>
+                        <p>The real-time detection backbone behind every tracking pipeline Hassan builds.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="sports-analytics-engineer.html">
+                        <strong>Sports Analytics Engineer</strong>
+                        <p>Multi-camera pose data turned into biomechanical performance reports for athletes.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision-engineer.html">
+                        <strong>Computer Vision Engineer</strong>
+                        <p>Full-stack vision engineering — pose, tracking and real-time analytics in production.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="sports-analytics.html">
+                        <strong>Sports Analytics</strong>
+                        <p>Turning player tracking and pose data into metrics that coaches actually use.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Need an Object Tracking Engineer who ships?</h2>
+                        <p>Tell me about your cameras, scenes and analytics goals — I'll give you a straight answer on feasibility within 48 hours.</p>
+                    </div>
+                    <a href="mailto:muhammadhassangul01@gmail.com" class="btn btn-primary">Email Hassan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="./" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                    </span>
+                    <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+                </a>
+                <p class="footer-tagline">Computer Vision Engineer &amp; AI Specialist. Building machines that see, track and understand human performance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="./#about">About</a>
+                <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                <a href="resume.html">Resume &amp; CV</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:muhammadhassangul01@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/its-muhammad-hassan" target="_blank" rel="me noopener">LinkedIn</a>
+                <a href="https://github.com/muhammadhassangul01" target="_blank" rel="me noopener">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Islamabad, Pakistan</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> Muhammad Hassan Gul. All rights reserved.</p>
+            <a href="#top" class="back-top" id="backTop" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="assets/js/pages.js" defer></script>
+</body>
+</html>

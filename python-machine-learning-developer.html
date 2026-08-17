@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function () {
+            var t = localStorage.getItem('hg-theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <!-- ======================= PRIMARY META (SEO) ======================= -->
+    <title>Python Machine Learning Developer — Computer Vision &amp; AI</title>
+    <meta name="title" content="Python Machine Learning Developer — Computer Vision &amp; AI">
+    <meta name="description" content="Python ML developer building computer vision systems with PyTorch, OpenCV and FastAPI. Clean code, 85% test coverage, production deployment. Muhammad Hassan Gul.">
+    <meta name="keywords" content="Python ML Developer, Python Developer AI, FastAPI Developer, Python Computer Vision, Backend AI Developer">
+    <meta name="author" content="Muhammad Hassan Gul">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://hassangul.me/python-machine-learning-developer.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================= OPEN GRAPH / SOCIAL ======================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Muhammad Hassan Gul">
+    <meta property="og:url" content="https://hassangul.me/python-machine-learning-developer.html">
+    <meta property="og:title" content="Python Machine Learning Developer — Muhammad Hassan Gul">
+    <meta property="og:description" content="Python ML developer building computer vision systems with PyTorch, OpenCV and FastAPI — clean code, 85% test coverage and production deployment.">
+    <meta property="og:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Muhammad Hassan Gul — Python Machine Learning Developer">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hassangul.me/python-machine-learning-developer.html">
+    <meta name="twitter:title" content="Python Machine Learning Developer — Muhammad Hassan Gul">
+    <meta name="twitter:description" content="Python ML developer building and serving computer vision systems with PyTorch, OpenCV and FastAPI.">
+    <meta name="twitter:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="Muhammad Hassan Gul — Python Machine Learning Developer">
+
+    <!-- ======================= FAVICON / APP ICONS ======================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- ======================= PERFORMANCE: FONTS & RESOURCES ======================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- ======================= STYLESHEETS ======================= -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- ======================= STRUCTURED DATA ======================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hassangul.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Python Machine Learning Developer", "item": "https://hassangul.me/python-machine-learning-developer.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Python Machine Learning Developer — Computer Vision & AI",
+      "url": "https://hassangul.me/python-machine-learning-developer.html",
+      "description": "Python ML developer building computer vision systems with PyTorch, OpenCV and FastAPI — clean code, 85% test coverage and production deployment.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Muhammad Hassan Gul — Portfolio", "url": "https://hassangul.me/" },
+      "about": {
+        "@type": "Person",
+        "name": "Muhammad Hassan Gul",
+        "jobTitle": "Python Machine Learning Developer",
+        "url": "https://hassangul.me/"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is Python the language of choice for machine learning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Python combines a readable syntax with the strongest ecosystem in the field — PyTorch and TensorFlow for deep learning, OpenCV and NumPy for imaging, FastAPI for serving. It lets engineers move from research idea to production API faster than any alternative."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Python stack does Muhammad Hassan Gul use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PyTorch for training and export, OpenCV for image and video processing, and FastAPI to serve optimized models as production APIs, all containerized with Docker and deployed on AWS (S3, EC2)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does FastAPI fit into a machine learning pipeline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FastAPI wraps trained models in asynchronous HTTP endpoints with automatic request validation and OpenAPI docs. It's fast, typed and testable, making it ideal for serving inference at scale and for integrating vision results into backend systems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does test coverage matter for ML code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ML systems fail in silent ways — wrong data shapes, off-by-one frame offsets, coordinate flips. A test suite with 85 percent coverage catches those regressions before they reach production, which is the discipline Hassan applies to every pipeline he ships."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="nav" id="siteNav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <a href="./" class="logo" aria-label="Muhammad Hassan Gul — home">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                </span>
+                <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./#about" class="nav-link">About</a></li>
+                <li><a href="./#skills" class="nav-link">Skills</a></li>
+                <li><a href="./#experience" class="nav-link">Experience</a></li>
+                <li><a href="./#projects" class="nav-link">Projects</a></li>
+                <li><a href="./#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+                </button>
+                <a href="./#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="./#about">About</a>
+            <a href="./#skills">Skills</a>
+            <a href="./#experience">Experience</a>
+            <a href="./#projects">Projects</a>
+            <a href="./#faq">FAQ</a>
+            <a href="./#contact" class="btn btn-primary btn-block">Hire Me</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ======================= PAGE HERO ======================= -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span class="current">Python Machine Learning Developer</span>
+                </nav>
+                <h1>Python Machine Learning Developer</h1>
+                <p class="lead">Python is the backbone of Hassan's stack — from training models in PyTorch to serving them through FastAPI backends.</p>
+                <div class="topic-pills">
+                    <span class="tag">Python</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">OpenCV</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Docker</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container content-grid">
+                <article class="prose">
+                    <h2>Why Python for Machine Learning</h2>
+                    <p>Python won the machine learning ecosystem because it lets you <strong>move fast from idea to working system</strong>. The libraries are unmatched — PyTorch for deep learning, OpenCV and NumPy for imaging, FastAPI for serving — and the same language spans research notebooks and production backends.</p>
+                    <p>Hassan uses Python at every layer of his stack. It's the language he trains in, the language that processes frames, and the language that exposes his models to the world. That end-to-end ownership is rare and it shows in how cleanly his pipelines ship. See the <a href="pytorch-for-computer-vision.html">PyTorch for computer vision</a> guide for the training side.</p>
+
+                    <h2>PyTorch &amp; OpenCV Day to Day</h2>
+                    <p>In a typical day Hassan works between two libraries. <strong>PyTorch</strong> for building and training models — detection with <a href="object-detection-yolo.html">YOLO</a>, keypoint networks, tracking logic. <strong>OpenCV</strong> for the messy real world — reading RTSP streams, resizing, color conversion, drawing overlays that coaches actually read.</p>
+                    <p>Writing this cleanly matters: a well-structured pipeline is the difference between a model that demos and a product that runs for hours unattended. The <a href="opencv-computer-vision.html">OpenCV computer vision</a> page breaks down the imaging layer in more detail.</p>
+
+                    <h2>Serving Models with FastAPI</h2>
+                    <p>Once trained, models need an interface. <strong>FastAPI</strong> wraps optimized engines — ONNX Runtime or TensorRT — in typed, asynchronous endpoints with automatic validation and OpenAPI docs. It handles the concurrency a real product demands while keeping the code readable and testable.</p>
+                    <p>The same service that accepts a video frame and returns pose or tracking data plugs into dashboards, coach apps and automated scoring systems. For the wider serving context, see <a href="computer-vision-engineer.html">Computer Vision Engineer</a>.</p>
+
+                    <h2>Testing &amp; Reliability</h2>
+                    <p>Vision code fails silently. A transpose, a frame offset, a flipped coordinate — each corrupts results without a crash. Hassan defends against this with automated tests, maintaining <strong>85% test coverage</strong> across data processing, model wrappers and API layers.</p>
+                    <ul class="check-list">
+                        <li><strong>85% test coverage</strong> — unit and integration tests across the whole pipeline.</li>
+                        <li><strong>Typed interfaces</strong> — Pydantic models validate inputs at the boundary, catching bad data early.</li>
+                        <li><strong>Deterministic transforms</strong> — testable, reproducible image and video preprocessing.</li>
+                        <li><strong>Clean code</strong> — small functions, clear naming, no hidden state between frames.</li>
+                    </ul>
+
+                    <h2>Containerized Deployment</h2>
+                    <p>Reliability continues into deployment. Hassan packages every service as a <strong>Docker</strong> image, so the container that runs in development behaves identically on edge boxes and in the cloud — AWS <strong>S3</strong> for storage, <strong>EC2</strong> for compute. Model versions, dependencies and environment are pinned and reproducible.</p>
+                    <p>The outcome is a stack you can hand to a teammate with confidence: <strong>PyTorch → ONNX/TensorRT → FastAPI → Docker → AWS</strong>, tested at every step. For the machine learning perspective on this workflow, see the <a href="machine-learning-engineer.html">Machine Learning Engineer</a> page.</p>
+                    <blockquote>“Python is how I go from research idea to running service without changing languages — train, serve and ship in one clean stack.” — Muhammad Hassan Gul</blockquote>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="side-card">
+                        <h3>About Hassan</h3>
+                        <div class="side-profile">
+                            <img src="assets/img/profile.webp" alt="Muhammad Hassan Gul" width="56" height="56" loading="lazy">
+                            <div>
+                                <strong>Muhammad Hassan Gul</strong>
+                                <span>Python ML Developer</span>
+                            </div>
+                        </div>
+                        <p>Islamabad, Pakistan · Open to remote &amp; relocation.</p>
+                    </div>
+                    <div class="side-card">
+                        <h3>Related Roles</h3>
+                        <div class="side-links">
+                            <a href="machine-learning-engineer.html">Machine Learning Engineer</a>
+                            <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                            <a href="object-tracking-engineer.html">Object Tracking Engineer</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Core Topics</h3>
+                        <div class="side-links">
+                            <a href="pytorch-for-computer-vision.html">PyTorch for Computer Vision</a>
+                            <a href="opencv-computer-vision.html">OpenCV Computer Vision</a>
+                            <a href="computer-vision.html">Computer Vision Guide</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Hire Hassan</h3>
+                        <p>Open to full-time, contract and consulting engagements worldwide.</p>
+                        <a href="./#contact" class="btn btn-primary btn-sm btn-block">Let's Talk</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================= RELATED ======================= -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-tag">Related</span>
+                    <h2 class="section-title">Explore related <em>topics</em></h2>
+                </div>
+                <div class="related-grid">
+                    <a class="related-card" href="pytorch-for-computer-vision.html">
+                        <strong>PyTorch for Computer Vision</strong>
+                        <p>Why PyTorch is the backbone of modern vision research and training workflows.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="opencv-computer-vision.html">
+                        <strong>OpenCV Computer Vision</strong>
+                        <p>Imaging primitives, stream handling and preprocessing in the Python vision stack.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision-engineer.html">
+                        <strong>Computer Vision Engineer</strong>
+                        <p>Full-stack vision engineering — pose, tracking and real-time analytics in production.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="machine-learning-engineer.html">
+                        <strong>Machine Learning Engineer</strong>
+                        <p>Training, optimizing and shipping models that run fast in production.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision.html">
+                        <strong>What is Computer Vision?</strong>
+                        <p>A practical introduction to how machines see, detect, track and understand visual data.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Need a Python ML Developer who ships?</h2>
+                        <p>Tell me about your model, data and serving needs — I'll give you a straight answer on feasibility within 48 hours.</p>
+                    </div>
+                    <a href="mailto:muhammadhassangul01@gmail.com" class="btn btn-primary">Email Hassan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="./" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                    </span>
+                    <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+                </a>
+                <p class="footer-tagline">Computer Vision Engineer &amp; AI Specialist. Building machines that see, track and understand human performance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="./#about">About</a>
+                <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                <a href="resume.html">Resume &amp; CV</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:muhammadhassangul01@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/its-muhammad-hassan" target="_blank" rel="me noopener">LinkedIn</a>
+                <a href="https://github.com/muhammadhassangul01" target="_blank" rel="me noopener">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Islamabad, Pakistan</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> Muhammad Hassan Gul. All rights reserved.</p>
+            <a href="#top" class="back-top" id="backTop" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="assets/js/pages.js" defer></script>
+</body>
+</html>

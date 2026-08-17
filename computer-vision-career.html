@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function () {
+            var t = localStorage.getItem('hg-theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <!-- ======================= PRIMARY META (SEO) ======================= -->
+    <title>How to Become a Computer Vision Engineer — Career Guide</title>
+    <meta name="title" content="How to Become a Computer Vision Engineer — Career Guide">
+    <meta name="description" content="How to become a Computer Vision Engineer: skills, math, deep learning, projects and portfolio building. A career roadmap from a working CV engineer.">
+    <meta name="keywords" content="Computer Vision Engineer Career, Become a Computer Vision Engineer, CV Engineer Skills, AI Career, Computer Vision Jobs">
+    <meta name="author" content="Muhammad Hassan Gul">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://hassangul.me/computer-vision-career.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================= OPEN GRAPH / SOCIAL ======================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Muhammad Hassan Gul">
+    <meta property="og:url" content="https://hassangul.me/computer-vision-career.html">
+    <meta property="og:title" content="How to Become a Computer Vision Engineer">
+    <meta property="og:description" content="A realistic career roadmap for getting into computer vision — skills, math, projects and portfolio building.">
+    <meta property="og:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="How to Become a Computer Vision Engineer">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hassangul.me/computer-vision-career.html">
+    <meta name="twitter:title" content="How to Become a Computer Vision Engineer">
+    <meta name="twitter:description" content="A career roadmap for getting into computer vision, from a working CV engineer.">
+    <meta name="twitter:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="How to Become a Computer Vision Engineer">
+
+    <!-- ======================= FAVICON / APP ICONS ======================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- ======================= PERFORMANCE: FONTS & RESOURCES ======================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- ======================= STYLESHEETS ======================= -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- ======================= STRUCTURED DATA ======================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hassangul.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Computer Vision Career", "item": "https://hassangul.me/computer-vision-career.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "How to Become a Computer Vision Engineer",
+      "url": "https://hassangul.me/computer-vision-career.html",
+      "description": "A realistic career roadmap for getting into computer vision — skills, math, deep learning, projects and portfolio building.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Muhammad Hassan Gul — Portfolio", "url": "https://hassangul.me/" },
+      "about": {
+        "@type": "Person",
+        "name": "Muhammad Hassan Gul",
+        "jobTitle": "Computer Vision Engineer",
+        "url": "https://hassangul.me/"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a degree to become a Computer Vision Engineer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not strictly. Many teams hire on demonstrated ability — projects, code and results — rather than a specific qualification. A degree helps with fundamentals and early screening, but a strong portfolio of working vision projects can carry your application."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What math do I need for computer vision?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Linear algebra and geometry are the core — vectors, matrices, transforms and camera projection. Calculus and probability matter for understanding how neural networks train, and a working feel for statistics helps you read model results honestly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What projects should I build to learn computer vision?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with classical image processing (edge detection, face detection), then move to deep learning: a detection model on a public dataset, a pose estimation model, then a real-time video pipeline that tracks objects and streams metrics. Real pipelines beat toy demos on a resume."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get hired as a Computer Vision Engineer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Show proof, not promises. Publish working projects with source and results, quantify outcomes (accuracy, latency), be honest about what failed, and apply broadly — including remote roles, which level the playing field for talent outside major tech hubs."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="nav" id="siteNav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <a href="./" class="logo" aria-label="Muhammad Hassan Gul — home">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                </span>
+                <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./#about" class="nav-link">About</a></li>
+                <li><a href="./#skills" class="nav-link">Skills</a></li>
+                <li><a href="./#experience" class="nav-link">Experience</a></li>
+                <li><a href="./#projects" class="nav-link">Projects</a></li>
+                <li><a href="./#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+                </button>
+                <a href="./#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="./#about">About</a>
+            <a href="./#skills">Skills</a>
+            <a href="./#experience">Experience</a>
+            <a href="./#projects">Projects</a>
+            <a href="./#faq">FAQ</a>
+            <a href="./#contact" class="btn btn-primary btn-block">Hire Me</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ======================= PAGE HERO ======================= -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span class="current">Computer Vision Career</span>
+                </nav>
+                <h1>How to Become a Computer Vision Engineer</h1>
+                <p class="lead">A realistic career roadmap for getting into computer vision — written by Hassan, who did exactly this.</p>
+                <div class="topic-pills">
+                    <span class="tag">Career</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Portfolio</span>
+                    <span class="tag">Interviewing</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container content-grid">
+                <article class="prose">
+                    <h2>Do You Need a Degree?</h2>
+                    <p>The short answer: no, not strictly. Computer vision teams care about whether you can build systems that work — projects, source code and measured results carry more weight than credentials in most hiring conversations. A degree helps with fundamentals and gets you past automated screening, but it is not the gate it used to be.</p>
+                    <p>What matters more is the feedback loop: can you take an idea, train a model, debug it and ship it? If you can demonstrate that with real artifacts, you have a path regardless of background. Hassan's own route is proof that consistent project work opens doors.</p>
+
+                    <h2>The Math Foundation</h2>
+                    <p>You do not need a math degree, but you need working fluency in the parts that come up daily. <strong>Linear algebra</strong> is the core — vectors, matrices, dot products, and how images and convolutions are represented as tensors. <strong>Geometry</strong> matters for anything involving cameras, transforms and coordinate spaces.</p>
+                    <p><strong>Calculus</strong> and <strong>probability</strong> are what let you understand how backpropagation and losses actually behave, and a feel for statistics stops you from fooling yourself with a single accuracy number. Learn these as needed, not as a full syllabus — the models you build will teach you what you actually lack.</p>
+
+                    <h2>Programming &amp; Tools</h2>
+                    <p><strong>Python</strong> is non-negotiable. It is the language of the ecosystem, and the faster you get comfortable with numpy, dataclasses and clean functions, the faster you move. The essential toolkit is small and practical: <a href="opencv-computer-vision.html">OpenCV</a> for image and video work, <a href="pytorch-for-computer-vision.html">PyTorch</a> for deep learning, and the deployment stack — Docker, FastAPI, and a GPU workflow for training.</p>
+                    <p>Version control, unit tests and basic Linux fluency are not optional extras; they are what separate a hobby script from something a team can trust. Hassan's production work runs on exactly this stack, backed by 85% test coverage.</p>
+
+                    <h2>Deep Learning Fundamentals</h2>
+                    <p>Master the core tasks in order: classification first, then <a href="object-detection-yolo.html">object detection</a>, then <a href="pose-estimation.html">pose estimation</a> and <a href="multi-object-tracking-bytetrack.html">object tracking</a>. Each builds on the last, and all three are what most real computer vision jobs actually involve.</p>
+                    <p>Understand how a model trains — loss functions, optimizers, learning rates, overfitting and augmentation — before reaching for the fanciest architecture. A tuned small model almost always beats an untuned large one, and interviewers can smell memorized code immediately.</p>
+
+                    <h2>Projects to Build</h2>
+                    <ul class="check-list">
+                        <li><strong>Classical starter</strong> — an edge/face detection app with OpenCV; forces you to learn image fundamentals.</li>
+                        <li><strong>Detection model</strong> — fine-tune a YOLO model on a public dataset and measure mAP honestly.</li>
+                        <li><strong>Pose estimation</strong> — a keypoint model that tracks a person's joints from video.</li>
+                        <li><strong>Real-time pipeline</strong> — stream in video, detect, track with identities and emit metrics. This one is the resume changer: it is a mini version of production work.</li>
+                    </ul>
+                    <p>Public datasets are fine — everyone uses them. What stands out is what you do <em>around</em> the model: robust preprocessing, error handling, honest evaluation, and a working end-to-end system rather than a single notebook.</p>
+
+                    <h2>Building a Portfolio</h2>
+                    <p>A portfolio is proof of work, and the format matters less than the substance. Put projects on <strong>GitHub</strong> with clean code and a README that states the problem, approach, results and known limitations. A short write-up or demo video of a working pipeline beats ten slides of jargon.</p>
+                    <p>Quantity helps early, quality helps forever. Three finished, well-documented projects beat ten abandoned ones, and each finished project is reusable evidence in every interview and application.</p>
+
+                    <h2>Applying &amp; Interviewing</h2>
+                    <p>Apply broadly, including remote roles — they level the playing field dramatically for talent outside major tech hubs. When you apply, lead with the concrete result: 'I built a real-time player tracking pipeline' outranks 'I have strong knowledge of computer vision.'</p>
+                    <p>Interviews usually mix whiteboard math, a coding question and a design conversation about a vision system. The design question is where project experience shines — talk through preprocessing, model choice, latency budgets and failure modes the way you actually reason about them.</p>
+
+                    <h2>Common Mistakes</h2>
+                    <ul class="check-list">
+                        <li><strong>Chasing the newest architecture</strong> — solid fundamentals and a tuned baseline win every time.</li>
+                        <li><strong>Overfitting the metric</strong> — one impressive accuracy number without validation honesty collapses in interviews.</li>
+                        <li><strong>Skipping the pipeline</strong> — a model without deployment is a demo; learn the serving layer early.</li>
+                        <li><strong>Ignoring the boring 80%</strong> — data, preprocessing and evaluation are most of the job; treat them as the craft.</li>
+                        <li><strong>Waiting to feel ready</strong> — you learn fastest by shipping imperfect projects, not by taking more courses.</li>
+                    </ul>
+                    <p>Want to see what the destination looks like? Read the <a href="computer-vision-engineer.html">computer vision engineer</a> overview, see the <a href="resume.html">resume</a> of someone who did it, or <a href="./#contact">ask Hassan directly</a> about the journey.</p>
+                    <blockquote>“Nobody is hired for knowing computer vision. They're hired for proving it — project by project, result by result.” — Muhammad Hassan Gul</blockquote>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="side-card">
+                        <h3>About Hassan</h3>
+                        <div class="side-profile">
+                            <img src="assets/img/profile.webp" alt="Muhammad Hassan Gul" width="56" height="56" loading="lazy">
+                            <div>
+                                <strong>Muhammad Hassan Gul</strong>
+                                <span>Computer Vision Engineer</span>
+                            </div>
+                        </div>
+                        <p>Islamabad, Pakistan · Open to remote &amp; relocation.</p>
+                    </div>
+                    <div class="side-card">
+                        <h3>Related Roles</h3>
+                        <div class="side-links">
+                            <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                            <a href="machine-learning-engineer.html">Machine Learning Engineer</a>
+                            <a href="python-machine-learning-developer.html">Python ML Developer</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Core Topics</h3>
+                        <div class="side-links">
+                            <a href="computer-vision.html">Computer Vision Guide</a>
+                            <a href="pytorch-for-computer-vision.html">PyTorch Guide</a>
+                            <a href="opencv-computer-vision.html">OpenCV Guide</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Hire Hassan</h3>
+                        <p>Open to full-time, contract and consulting engagements worldwide.</p>
+                        <a href="./#contact" class="btn btn-primary btn-sm btn-block">Let's Talk</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================= RELATED ======================= -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-tag">Related</span>
+                    <h2 class="section-title">Explore related <em>topics</em></h2>
+                </div>
+                <div class="related-grid">
+                    <a class="related-card" href="computer-vision-engineer.html">
+                        <strong>Computer Vision Engineer</strong>
+                        <p>The role and daily work of a computer vision engineer in production.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision.html">
+                        <strong>What is Computer Vision?</strong>
+                        <p>Start here if you are new — a practical introduction to the field.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="resume.html">
+                        <strong>Resume &amp; CV</strong>
+                        <p>A real example of what a computer vision engineer's resume looks like.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="pytorch-for-computer-vision.html">
+                        <strong>PyTorch Guide</strong>
+                        <p>The framework you will build and train your vision models with.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="python-machine-learning-developer.html">
+                        <strong>Python ML Developer</strong>
+                        <p>The Python foundations every computer vision engineer needs.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="hire-computer-vision-engineer.html">
+                        <strong>Hire a Computer Vision Engineer</strong>
+                        <p>See the other side of the table — what employers actually look for.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Want a straight answer on your vision career?</h2>
+                        <p>Ask Hassan anything about getting into computer vision — projects, interviewing, or the roadmap — within 48 hours.</p>
+                    </div>
+                    <a href="mailto:muhammadhassangul01@gmail.com" class="btn btn-primary">Email Hassan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="./" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                    </span>
+                    <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+                </a>
+                <p class="footer-tagline">Computer Vision Engineer &amp; AI Specialist. Building machines that see, track and understand human performance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="./#about">About</a>
+                <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                <a href="resume.html">Resume &amp; CV</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:muhammadhassangul01@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/its-muhammad-hassan" target="_blank" rel="me noopener">LinkedIn</a>
+                <a href="https://github.com/muhammadhassangul01" target="_blank" rel="me noopener">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Islamabad, Pakistan</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> Muhammad Hassan Gul. All rights reserved.</p>
+            <a href="#top" class="back-top" id="backTop" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="assets/js/pages.js" defer></script>
+</body>
+</html>

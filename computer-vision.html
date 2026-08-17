@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function () {
+            var t = localStorage.getItem('hg-theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <!-- ======================= PRIMARY META (SEO) ======================= -->
+    <title>What is Computer Vision? A Practical Guide</title>
+    <meta name="title" content="What is Computer Vision? A Practical Guide">
+    <meta name="description" content="What is Computer Vision? Learn how machines detect, track and understand visual data — with real examples from sports analytics and edge AI. By Muhammad Hassan Gul.">
+    <meta name="keywords" content="What is Computer Vision, Computer Vision Guide, Computer Vision Explained, Computer Vision Applications">
+    <meta name="author" content="Muhammad Hassan Gul">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://hassangul.me/computer-vision.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================= OPEN GRAPH / SOCIAL ======================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Muhammad Hassan Gul">
+    <meta property="og:url" content="https://hassangul.me/computer-vision.html">
+    <meta property="og:title" content="What is Computer Vision? A Practical Guide">
+    <meta property="og:description" content="A practical, beginner-friendly explanation of how machines detect, track and understand visual data.">
+    <meta property="og:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="What is Computer Vision — A Practical Guide">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hassangul.me/computer-vision.html">
+    <meta name="twitter:title" content="What is Computer Vision? A Practical Guide">
+    <meta name="twitter:description" content="A practical, beginner-friendly explanation of how machines detect, track and understand visual data.">
+    <meta name="twitter:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="What is Computer Vision — A Practical Guide">
+
+    <!-- ======================= FAVICON / APP ICONS ======================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- ======================= PERFORMANCE: FONTS & RESOURCES ======================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- ======================= STYLESHEETS ======================= -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- ======================= STRUCTURED DATA ======================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hassangul.me/" },
+        { "@type": "ListItem", "position": 2, "name": "What is Computer Vision", "item": "https://hassangul.me/computer-vision.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "What is Computer Vision? A Practical Guide",
+      "url": "https://hassangul.me/computer-vision.html",
+      "description": "A practical, beginner-friendly guide to computer vision — how machines detect, track and understand visual data, with real examples.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Muhammad Hassan Gul — Portfolio", "url": "https://hassangul.me/" },
+      "about": {
+        "@type": "Person",
+        "name": "Muhammad Hassan Gul",
+        "jobTitle": "Computer Vision Engineer",
+        "url": "https://hassangul.me/"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is computer vision in simple terms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Computer vision is the field of AI that teaches machines to interpret images and video — detecting objects, estimating pose, tracking movement and turning pixels into usable data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the core tasks of computer vision?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The core tasks are image classification, object detection, segmentation, pose estimation and multi-object tracking. Together they cover most real-world vision applications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is computer vision used in real life?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sports analytics and athlete tracking, manufacturing quality inspection, medical imaging, retail checkout, autonomous vehicles and security systems all rely on computer vision."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What tools do computer vision engineers use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PyTorch and TensorFlow for deep learning, OpenCV for image processing, YOLO and ByteTrack for detection and tracking, and ONNX Runtime, TensorRT and Docker for deployment."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="nav" id="siteNav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <a href="./" class="logo" aria-label="Muhammad Hassan Gul — home">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                </span>
+                <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./#about" class="nav-link">About</a></li>
+                <li><a href="./#skills" class="nav-link">Skills</a></li>
+                <li><a href="./#experience" class="nav-link">Experience</a></li>
+                <li><a href="./#projects" class="nav-link">Projects</a></li>
+                <li><a href="./#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+                </button>
+                <a href="./#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="./#about">About</a>
+            <a href="./#skills">Skills</a>
+            <a href="./#experience">Experience</a>
+            <a href="./#projects">Projects</a>
+            <a href="./#faq">FAQ</a>
+            <a href="./#contact" class="btn btn-primary btn-block">Hire Me</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ======================= PAGE HERO ======================= -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span class="current">What is Computer Vision</span>
+                </nav>
+                <h1>What is Computer Vision?</h1>
+                <p class="lead">A practical, beginner-friendly explanation of computer vision written by an engineer who builds it every day.</p>
+                <div class="topic-pills">
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Object Detection</span>
+                    <span class="tag">Pose Estimation</span>
+                    <span class="tag">Edge AI</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container content-grid">
+                <article class="prose">
+                    <h2>Computer Vision in Plain Words</h2>
+                    <p>Computer vision is the field of artificial intelligence that gives machines the ability to <strong>interpret visual data</strong> — images, video and live camera streams. Where a database query returns rows, a vision system returns understanding: there is a player in frame 42, their elbow is bent at 118 degrees, and they have been tracked for the last three seconds.</p>
+                    <p>Humans do this effortlessly; computers don't. A camera is just a grid of numbers (pixels), and a video is just those grids changing over time. The job of computer vision is to find the patterns in those numbers — edges, textures, shapes, motion — and turn them into answers a product or a business can act on. I do this every day at <a href="computer-vision-engineer.html">ID Sports Ventures</a>, turning live sports footage into biomechanical data for athlete performance.</p>
+
+                    <h2>How It Works: From Pixels to Predictions</h2>
+                    <p>Most modern vision systems are powered by <strong>convolutional neural networks (CNNs)</strong>. The network starts with raw pixel values and learns, layer by layer, to recognize increasingly abstract features — first simple edges and colors, then textures and shapes, and finally complete objects like a person or a ball. Training a network means showing it thousands of labeled examples and adjusting its internal weights until its predictions match reality.</p>
+                    <p>But there's a big gap between a model that works on a research dataset and one that works in production. Real systems need preprocessing (resizing, normalization, format conversion), inference engines optimized for speed (ONNX Runtime, TensorRT), and careful handling of the video stream itself — decoding frames with FFmpeg, pulling them from RTSP cameras, and keeping the whole pipeline fast enough to process live footage. That's where engineering matters as much as modeling.</p>
+
+                    <h2>The Core Tasks</h2>
+                    <p>Nearly every computer vision application is built from a handful of core tasks:</p>
+                    <h3>Image classification</h3>
+                    <p>The simplest task: assign a label to a whole image — "this photo contains a basketball court." Useful for sorting and searching, but coarse; it says nothing about where things are.</p>
+                    <h3>Object detection</h3>
+                    <p>Detection goes a step further: find the objects in an image and <strong>draw a box around each one</strong>. Modern detectors like <a href="object-detection-yolo.html">YOLO</a> run in real time, which makes them the backbone of most live systems — counting players, finding defects, spotting people in a scene.</p>
+                    <h3>Segmentation</h3>
+                    <p>Segmentation labels every single pixel. Semantic segmentation assigns each pixel a class (road, car, sky), while instance segmentation distinguishes individual objects. It's precise and pixel-accurate, at the cost of more compute.</p>
+                    <h3>Pose estimation</h3>
+                    <p>Pose estimation localizes <strong>keypoints on the human body</strong> — joints like shoulders, elbows and knees — and connects them into a skeleton. It's the foundation of sports biomechanics and form analysis. See the <a href="pose-estimation.html">pose estimation guide</a> for a deeper dive.</p>
+                    <h3>Multi-object tracking</h3>
+                    <p>Tracking assigns a consistent identity to each detected object across frames, so you know which athlete is which — even when they cross paths or occlude each other. Systems like <a href="multi-object-tracking-bytetrack.html">ByteTrack</a> handle this at high speed.</p>
+
+                    <h2>Real-World Applications</h2>
+                    <ul class="check-list">
+                        <li><strong>Sports</strong> — automated athlete tracking, biomechanical analysis and drill assessment from live footage.</li>
+                        <li><strong>Manufacturing</strong> — quality inspection on production lines, detecting defects that human eyes miss.</li>
+                        <li><strong>Healthcare</strong> — assisting doctors in reading medical images and monitoring patient movement.</li>
+                        <li><strong>Retail</strong> — shelf monitoring, automated checkout and people counting in stores.</li>
+                    </ul>
+
+                    <h2>What Good Looks Like in Production</h2>
+                    <p>The difference between a demo and a deployed system is measured in numbers. In my own work, the standards are: <strong>sub-30ms inference latency</strong> on edge hardware, a <strong>15% accuracy improvement</strong> from careful pipeline and model tuning, <strong>40% less preprocessing overhead</strong> after standardizing data workflows, and <strong>85% test coverage</strong> so changes don't silently break the system. If a vision product can't hit its latency budget on the real hardware, the accuracy of the model is almost irrelevant.</p>
+
+                    <div class="kpi-row">
+                        <div class="kpi"><strong>&lt;30ms</strong><span>Edge inference latency</span></div>
+                        <div class="kpi"><strong>+15%</strong><span>Pose accuracy boost</span></div>
+                        <div class="kpi"><strong>−40%</strong><span>Pipeline overhead cut</span></div>
+                    </div>
+
+                    <h2>Getting Started</h2>
+                    <p>If you want to learn computer vision, start hands-on. Pick <strong>OpenCV</strong> and learn basic image manipulation, then train a small detector on a <strong>YOLO</strong> model with <strong>PyTorch</strong>. Work with real video as early as possible — streaming, decoding and live inference behave very differently from static images. And read about <a href="edge-ai-inference.html">edge AI inference</a> and <a href="real-time-video-analytics.html">real-time video analytics</a> to understand the deployment side of the field.</p>
+                    <blockquote>"Computer vision is how a machine learns to read the world one frame at a time — and the difference between a working system and a demo is measured in milliseconds." — Muhammad Hassan Gul</blockquote>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="side-card">
+                        <h3>About Hassan</h3>
+                        <div class="side-profile">
+                            <img src="assets/img/profile.webp" alt="Muhammad Hassan Gul" width="56" height="56" loading="lazy">
+                            <div>
+                                <strong>Muhammad Hassan Gul</strong>
+                                <span>Computer Vision Engineer</span>
+                            </div>
+                        </div>
+                        <p>Islamabad, Pakistan · Open to remote &amp; relocation.</p>
+                    </div>
+                    <div class="side-card">
+                        <h3>Related Roles</h3>
+                        <div class="side-links">
+                            <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                            <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                            <a href="machine-learning-engineer.html">Machine Learning Engineer</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Core Topics</h3>
+                        <div class="side-links">
+                            <a href="object-detection-yolo.html">YOLO Object Detection</a>
+                            <a href="pose-estimation.html">Pose Estimation</a>
+                            <a href="real-time-video-analytics.html">Real-Time Video Analytics</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Hire Hassan</h3>
+                        <p>Open to full-time, contract and consulting engagements worldwide.</p>
+                        <a href="./#contact" class="btn btn-primary btn-sm btn-block">Let's Talk</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================= RELATED ======================= -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-tag">Related</span>
+                    <h2 class="section-title">Explore related <em>topics</em></h2>
+                </div>
+                <div class="related-grid">
+                    <a class="related-card" href="object-detection-yolo.html">
+                        <strong>YOLO Object Detection</strong>
+                        <p>How YOLO detects objects in a single pass and why it dominates real-time vision systems.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="pose-estimation.html">
+                        <strong>Pose Estimation</strong>
+                        <p>How machines localize human joints and turn skeleton data into biomechanical insight.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="real-time-video-analytics.html">
+                        <strong>Real-Time Video Analytics</strong>
+                        <p>Pipelines that process live streams at speed — from RTSP ingestion to deployed metrics.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision-engineer.html">
+                        <strong>Computer Vision Engineer</strong>
+                        <p>Sub-30ms pose estimation, real-time tracking and production pipelines for sports technology.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision-career.html">
+                        <strong>Computer Vision Career</strong>
+                        <p>A practical look at building a career in computer vision, from skills to first role.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="opencv-computer-vision.html">
+                        <strong>OpenCV &amp; Computer Vision</strong>
+                        <p>The classic image processing toolbox that still underpins modern vision pipelines.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Need vision that actually ships?</h2>
+                        <p>Tell me about your latency targets and data — I'll give you a straight answer on feasibility within 48 hours.</p>
+                    </div>
+                    <a href="mailto:muhammadhassangul01@gmail.com" class="btn btn-primary">Email Hassan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="./" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                    </span>
+                    <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+                </a>
+                <p class="footer-tagline">Computer Vision Engineer &amp; AI Specialist. Building machines that see, track and understand human performance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="./#about">About</a>
+                <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                <a href="resume.html">Resume &amp; CV</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:muhammadhassangul01@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/its-muhammad-hassan" target="_blank" rel="me noopener">LinkedIn</a>
+                <a href="https://github.com/muhammadhassangul01" target="_blank" rel="me noopener">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Islamabad, Pakistan</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> Muhammad Hassan Gul. All rights reserved.</p>
+            <a href="#top" class="back-top" id="backTop" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="assets/js/pages.js" defer></script>
+</body>
+</html>

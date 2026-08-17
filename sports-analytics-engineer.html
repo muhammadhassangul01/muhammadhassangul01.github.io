@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function () {
+            var t = localStorage.getItem('hg-theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <!-- ======================= PRIMARY META (SEO) ======================= -->
+    <title>Sports Analytics Engineer — Computer Vision for Sports</title>
+    <meta name="title" content="Sports Analytics Engineer — Computer Vision for Sports">
+    <meta name="description" content="Sports analytics engineer building multi-camera tracking, automated scoring and biomechanical reports for athletes. Muhammad Hassan Gul, ID Sports Ventures.">
+    <meta name="keywords" content="Sports Analytics Engineer, Sports AI Engineer, Sports Technology, Athlete Performance Analytics, Computer Vision Sports">
+    <meta name="author" content="Muhammad Hassan Gul">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://hassangul.me/sports-analytics-engineer.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================= OPEN GRAPH / SOCIAL ======================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Muhammad Hassan Gul">
+    <meta property="og:url" content="https://hassangul.me/sports-analytics-engineer.html">
+    <meta property="og:title" content="Sports Analytics Engineer — Computer Vision for Sports">
+    <meta property="og:description" content="Sports analytics engineer building multi-camera pose tracking, automated scoring and biomechanical reports for athletes.">
+    <meta property="og:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Muhammad Hassan Gul — Sports Analytics Engineer">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hassangul.me/sports-analytics-engineer.html">
+    <meta name="twitter:title" content="Sports Analytics Engineer — Computer Vision for Sports">
+    <meta name="twitter:description" content="Sports analytics engineer building multi-camera pose tracking, automated scoring and biomechanical reports.">
+    <meta name="twitter:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="Muhammad Hassan Gul — Sports Analytics Engineer">
+
+    <!-- ======================= FAVICON / APP ICONS ======================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- ======================= PERFORMANCE: FONTS & RESOURCES ======================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- ======================= STYLESHEETS ======================= -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- ======================= STRUCTURED DATA ======================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hassangul.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Sports Analytics Engineer", "item": "https://hassangul.me/sports-analytics-engineer.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Sports Analytics Engineer — Computer Vision for Sports",
+      "url": "https://hassangul.me/sports-analytics-engineer.html",
+      "description": "Sports Analytics Engineer building multi-camera pose tracking, automated scoring and biomechanical performance reports for athletes at ID Sports Ventures.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Muhammad Hassan Gul — Portfolio", "url": "https://hassangul.me/" },
+      "about": {
+        "@type": "Person",
+        "name": "Muhammad Hassan Gul",
+        "jobTitle": "Sports Analytics Engineer",
+        "url": "https://hassangul.me/"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a sports analytics engineer do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A sports analytics engineer builds the computer vision systems that turn live match footage into athlete performance data — tracking positions, poses and actions, then computing metrics coaches and scientists use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you track athletes during heavy occlusion in live matches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "YOLO detection is fused with ByteTrack and DeepSORT to keep consistent player identities even when bodies overlap and re-enter the frame, so tracks survive the occlusion that breaks naive detectors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What results has Hassan delivered for sports teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 15% boost in pose accuracy, a 40% cut in preprocessing overhead and sub-30ms inference latency — enabling live, real-time analytics during competition rather than post-match processing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I work with Hassan on a sports project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Email muhammadhassangul01@gmail.com or connect on LinkedIn at linkedin.com/in/its-muhammad-hassan. He is open to full-time, contract and consulting engagements worldwide."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="nav" id="siteNav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <a href="./" class="logo" aria-label="Muhammad Hassan Gul — home">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                </span>
+                <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./#about" class="nav-link">About</a></li>
+                <li><a href="./#skills" class="nav-link">Skills</a></li>
+                <li><a href="./#experience" class="nav-link">Experience</a></li>
+                <li><a href="./#projects" class="nav-link">Projects</a></li>
+                <li><a href="./#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+                </button>
+                <a href="./#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="./#about">About</a>
+            <a href="./#skills">Skills</a>
+            <a href="./#experience">Experience</a>
+            <a href="./#projects">Projects</a>
+            <a href="./#faq">FAQ</a>
+            <a href="./#contact" class="btn btn-primary btn-block">Hire Me</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ======================= PAGE HERO ======================= -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span class="current">Sports Analytics Engineer</span>
+                </nav>
+                <h1>Sports Analytics Engineer</h1>
+                <p class="lead">Hassan engineers real-time video analytics that track athlete performance during live competition — working with sports scientists at ID Sports Ventures (Berlin) to turn raw footage into actionable biomechanical insight.</p>
+                <div class="topic-pills">
+                    <span class="tag">Pose Tracking</span>
+                    <span class="tag">ByteTrack</span>
+                    <span class="tag">Biomechanics</span>
+                    <span class="tag">Live Analytics</span>
+                    <span class="tag">Edge AI</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container content-grid">
+                <article class="prose">
+                    <h2>Computer Vision Meets Sports</h2>
+                    <p>Sports analytics has moved far beyond box scores. Modern teams and sports technology companies want <strong>frame-level insight</strong>: exactly where every athlete was, how their body moved, and what that means for performance and injury risk. That data has to come from somewhere — and the most scalable source is computer vision on the footage you already capture.</p>
+                    <p>Hassan builds these systems end to end. At <strong>ID Sports Ventures</strong> in Berlin — first as a full-time Computer Vision Engineer (Sep 2025–Dec 2025), now part-time (Jan 2026–Present) — he works alongside sports scientists to turn multi-camera video into performance analytics used during live competition, not just in post-match reviews.</p>
+                    <p>That design decision — <strong>live, not post-hoc</strong> — shapes everything: models must hit real-time latency on venue hardware, tracking must survive camera cuts and crowds, and the output has to be readable the moment a rally ends. It is product engineering with a latency meter attached, which is exactly the discipline most sports analytics deployments fail on.</p>
+
+                    <h2>Athlete Tracking Under Occlusion</h2>
+                    <p>Tracking athletes in a crowded frame is one of the hardest problems in applied vision. Players overlap, cross behind each other and re-enter the frame from odd angles — and a single identity switch corrupts the entire game's stats. Hassan solves this by combining <strong>YOLO detection</strong> with <strong><a href="multi-object-tracking-bytetrack.html">ByteTrack</a></strong> and DeepSORT, which maintain robust identity associations even through severe occlusion.</p>
+                    <p>The tracking layer feeds a pose estimation stage, so every athlete has both a <strong>stable identity</strong> and a <strong>skeleton</strong> — the two data streams that make automated analysis possible. See <a href="computer-vision.html">what computer vision is</a> if you're new to the space.</p>
+
+                    <h2>Biomechanical Performance Reports</h2>
+                    <p>Raw keypoints are just numbers. The value shows up when they become <strong>biomechanical metrics</strong>: joint angles, segment velocities, stance width, symmetry and movement quality. Hassan translates skeleton streams into these standardized measures and packages them as reports that coaches and scientists can act on without touching a line of code. The full methodology lives on the <a href="biomechanical-analysis.html">biomechanical analysis</a> page.</p>
+
+                    <h2>Automated Scoring &amp; Drill Assessment</h2>
+                    <p>Repetition-based sports — gymnastics, shooting, throwing, racket sports — run on drills that need objective scoring. Hassan builds pipelines that <strong>automatically score technique</strong> by comparing pose trajectories against target form, flagging deviations in real time. Athletes get instant feedback; coaches get consistency across every attempt, not just the ones they happened to watch closely.</p>
+                    <p>Scoring is deliberately transparent. Every automated score comes with the underlying keypoint evidence, so a coach can see <em>why</em> a rep was flagged — which keeps the system credible with athletes and useful in training, rather than a black box that gets ignored.</p>
+
+                    <h2>Proven Results</h2>
+                    <p>Measurable outcomes from shipped work:</p>
+                    <ul class="check-list">
+                        <li><strong>+15% pose accuracy</strong> — through data curation and preprocessing improvements, not bigger models.</li>
+                        <li><strong>−40% preprocessing overhead</strong> — headroom reinvested into lower latency and richer analytics.</li>
+                        <li><strong>Sub-30ms inference</strong> — TensorRT-accelerated models running live on edge hardware.</li>
+                    </ul>
+
+                    <div class="kpi-row">
+                        <div class="kpi"><strong>+15%</strong><span>Pose accuracy boost</span></div>
+                        <div class="kpi"><strong>−40%</strong><span>Preprocessing overhead cut</span></div>
+                        <div class="kpi"><strong>&lt;30ms</strong><span>Edge inference latency</span></div>
+                    </div>
+
+                    <p>Dig deeper into the domain through the <a href="sports-analytics.html">sports analytics</a> overview, and if you're building a similar product, the <a href="sports-analytics-engineer.html">engineering approach</a> applies to teams, leagues and training facilities alike.</p>
+                    <blockquote>“The goal isn't more data — it's a coach who can say 'that's a problem' five seconds after it happens, backed by numbers.” — Muhammad Hassan Gul</blockquote>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="side-card">
+                        <h3>About Hassan</h3>
+                        <div class="side-profile">
+                            <img src="assets/img/profile.webp" alt="Muhammad Hassan Gul" width="56" height="56" loading="lazy">
+                            <div>
+                                <strong>Muhammad Hassan Gul</strong>
+                                <span>Sports Analytics Engineer</span>
+                            </div>
+                        </div>
+                        <p>Islamabad, Pakistan · Open to remote &amp; relocation.</p>
+                    </div>
+                    <div class="side-card">
+                        <h3>Related Roles</h3>
+                        <div class="side-links">
+                            <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                            <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                            <a href="object-tracking-engineer.html">Object Tracking Engineer</a>
+                            <a href="edge-ai-engineer.html">Edge AI Engineer</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Core Topics</h3>
+                        <div class="side-links">
+                            <a href="sports-analytics.html">Sports Analytics</a>
+                            <a href="biomechanical-analysis.html">Biomechanical Analysis</a>
+                            <a href="multi-object-tracking-bytetrack.html">Multi-Object Tracking</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Hire Hassan</h3>
+                        <p>Open to full-time, contract and consulting engagements worldwide.</p>
+                        <a href="./#contact" class="btn btn-primary btn-sm btn-block">Let's Talk</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================= RELATED ======================= -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-tag">Related</span>
+                    <h2 class="section-title">Explore related <em>topics</em></h2>
+                </div>
+                <div class="related-grid">
+                    <a class="related-card" href="sports-analytics.html">
+                        <strong>What is Sports Analytics?</strong>
+                        <p>An overview of how data and computer vision are reshaping athlete performance analysis.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="biomechanical-analysis.html">
+                        <strong>Biomechanical Analysis</strong>
+                        <p>How raw keypoint streams become joint angles and performance metrics that coaches use.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="multi-object-tracking-bytetrack.html">
+                        <strong>Multi-Object Tracking with ByteTrack</strong>
+                        <p>How detection association keeps athlete identities stable through heavy occlusion.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="pose-estimation-engineer.html">
+                        <strong>Pose Estimation Engineer</strong>
+                        <p>Sub-30ms keypoint models that read human motion in real time for sports and biomechanics.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision-engineer.html">
+                        <strong>Computer Vision Engineer</strong>
+                        <p>The core role: real-time pose estimation, object tracking and edge AI for sports technology.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Building sports analytics that run live?</h2>
+                        <p>Tell me about your latency targets and data — I'll give you a straight answer on feasibility within 48 hours.</p>
+                    </div>
+                    <a href="mailto:muhammadhassangul01@gmail.com" class="btn btn-primary">Email Hassan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="./" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                    </span>
+                    <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+                </a>
+                <p class="footer-tagline">Computer Vision Engineer &amp; AI Specialist. Building machines that see, track and understand human performance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="./#about">About</a>
+                <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                <a href="resume.html">Resume &amp; CV</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:muhammadhassangul01@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/its-muhammad-hassan" target="_blank" rel="me noopener">LinkedIn</a>
+                <a href="https://github.com/muhammadhassangul01" target="_blank" rel="me noopener">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Islamabad, Pakistan</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> Muhammad Hassan Gul. All rights reserved.</p>
+            <a href="#top" class="back-top" id="backTop" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="assets/js/pages.js" defer></script>
+</body>
+</html>

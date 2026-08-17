@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        (function () {
+            var t = localStorage.getItem('hg-theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
+    <!-- ======================= PRIMARY META (SEO) ======================= -->
+    <title>Pose Estimation — How Machines Read Human Motion</title>
+    <meta name="title" content="Pose Estimation — How Machines Read Human Motion">
+    <meta name="description" content="Pose estimation explained: keypoint detection, 2D vs 3D, real-time models and sports biomechanics applications. A practical guide by a Computer Vision Engineer.">
+    <meta name="keywords" content="Pose Estimation, Human Pose Estimation, Keypoint Detection, Pose Estimation Models, Pose AI">
+    <meta name="author" content="Muhammad Hassan Gul">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://hassangul.me/pose-estimation.html">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ======================= OPEN GRAPH / SOCIAL ======================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Muhammad Hassan Gul">
+    <meta property="og:url" content="https://hassangul.me/pose-estimation.html">
+    <meta property="og:title" content="Pose Estimation — How Machines Read Human Motion">
+    <meta property="og:description" content="Pose estimation explained: keypoint detection, 2D vs 3D, real-time models and sports biomechanics applications.">
+    <meta property="og:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Pose Estimation — How Machines Read Human Motion">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hassangul.me/pose-estimation.html">
+    <meta name="twitter:title" content="Pose Estimation — How Machines Read Human Motion">
+    <meta name="twitter:description" content="Pose estimation explained: keypoint detection, 2D vs 3D, real-time models and sports biomechanics applications.">
+    <meta name="twitter:image" content="https://hassangul.me/assets/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="Pose Estimation — How Machines Read Human Motion">
+
+    <!-- ======================= FAVICON / APP ICONS ======================= -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+    <!-- ======================= PERFORMANCE: FONTS & RESOURCES ======================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- ======================= STYLESHEETS ======================= -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- ======================= STRUCTURED DATA ======================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hassangul.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Pose Estimation", "item": "https://hassangul.me/pose-estimation.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Pose Estimation — How Machines Read Human Motion",
+      "url": "https://hassangul.me/pose-estimation.html",
+      "description": "Pose estimation explained: keypoints, 2D vs 3D, real-time models and sports biomechanics applications.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Muhammad Hassan Gul — Portfolio", "url": "https://hassangul.me/" },
+      "about": {
+        "@type": "Person",
+        "name": "Muhammad Hassan Gul",
+        "jobTitle": "Computer Vision Engineer",
+        "url": "https://hassangul.me/"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is pose estimation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pose estimation is a computer vision task that locates a person's joints — elbows, wrists, knees, hips — in an image or video and links them into a skeleton, letting machines understand human posture and motion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between 2D and 3D pose estimation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2D pose estimation predicts keypoint pixel coordinates on the image plane. 3D pose estimation estimates joint locations in three-dimensional space, which enables accurate joint angles and biomechanical analysis at a higher computational cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which models are used for real-time pose estimation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Modern real-time systems pair a lightweight detector with a compact keypoint network (top-down) or a single-stage fully-convolutional model (bottom-up), then optimize with quantization and TensorRT to run in under 30 milliseconds on edge hardware."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is pose estimation used in sports analytics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pose estimation extracts joint positions from match footage so engineers can compute joint angles, stride patterns and other biomechanical metrics, enabling athlete tracking, form assessment and automated scoring."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="nav" id="siteNav">
+        <nav class="nav-inner" aria-label="Main navigation">
+            <a href="./" class="logo" aria-label="Muhammad Hassan Gul — home">
+                <span class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                </span>
+                <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./#about" class="nav-link">About</a></li>
+                <li><a href="./#skills" class="nav-link">Skills</a></li>
+                <li><a href="./#experience" class="nav-link">Experience</a></li>
+                <li><a href="./#projects" class="nav-link">Projects</a></li>
+                <li><a href="./#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+                </button>
+                <a href="./#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="./#about">About</a>
+            <a href="./#skills">Skills</a>
+            <a href="./#experience">Experience</a>
+            <a href="./#projects">Projects</a>
+            <a href="./#faq">FAQ</a>
+            <a href="./#contact" class="btn btn-primary btn-block">Hire Me</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ======================= PAGE HERO ======================= -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span class="current">Pose Estimation</span>
+                </nav>
+                <h1>Pose Estimation — How Machines Read Human Motion</h1>
+                <p class="lead">A practical explanation of pose estimation, written by an engineer who ships sub-30ms keypoint models for sports technology.</p>
+                <div class="topic-pills">
+                    <span class="tag">Keypoint Detection</span>
+                    <span class="tag">2D &amp; 3D Pose</span>
+                    <span class="tag">Sports Biomechanics</span>
+                    <span class="tag">TensorRT</span>
+                    <span class="tag">Edge AI</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container content-grid">
+                <article class="prose">
+                    <h2>What is Pose Estimation?</h2>
+                    <p>Pose estimation is the computer vision task of locating a person's body parts — head, shoulders, elbows, wrists, hips, knees and ankles — in an image or video frame, then connecting them into a skeleton. It answers a deceptively simple question: <strong>where is every part of the body, and how is it moving?</strong></p>
+                    <p>In my work at <strong>ID Sports Ventures</strong>, pose estimation is the core signal behind almost everything else I build. Real-time athlete tracking, biomechanical reports and automated scoring all start with a reliable stream of keypoints. Before I can tell you anything about how a player moves, the model has to tell me where their joints are — frame after frame, at streaming speed.</p>
+
+                    <h2>Keypoints, Skeletons and Joints</h2>
+                    <p>A pose model doesn't output a picture of the person — it outputs a set of <strong>keypoints</strong>, each represented as an <code>(x, y, confidence)</code> tuple. The confidence tells you how sure the model is that the joint is actually there. A skeleton is simply the graph that connects semantically related keypoints: wrist to elbow, elbow to shoulder, shoulder to hip.</p>
+                    <p>Most pipelines use a shared keypoint layout. The COCO format defines 17 keypoints (nose, eyes, ears, and the major joints), which makes it easy to swap models or reuse labels across datasets. Some sports-specific systems extend this with foot keypoints for gait analysis. The layout you choose determines what metrics you can compute downstream — a skeleton without foot points can't measure stride length.</p>
+
+                    <h2>2D vs 3D Pose Estimation</h2>
+                    <p><strong>2D pose estimation</strong> predicts keypoint pixel coordinates on the image plane. It's fast, robust and cheap to deploy, but it can't tell you true joint angles because it lacks depth information. <strong>3D pose estimation</strong> predicts joint locations in three-dimensional space — either by lifting a 2D skeleton up with a second network, or by triangulating across multiple cameras.</p>
+                    <p>The trade-off is real: 3D gives you the biomechanical angles that matter to sports scientists, but it costs more compute and is more sensitive to calibration. In practice I use 2D for real-time monitoring and 3D where accurate joint angles drive the analysis — which is exactly the kind of biomechanical detail covered in the <a href="biomechanical-analysis.html">biomechanical analysis</a> topic.</p>
+
+                    <h2>Top-Down vs Bottom-Up Approaches</h2>
+                    <p>Real-time pose systems fall into two families. <strong>Top-down</strong> approaches first detect each person with an object detector (I use <a href="object-detection-yolo.html">YOLO</a>), then run a single-person keypoint network inside each bounding box. Accuracy is excellent and it composes naturally with <a href="multi-object-tracking-bytetrack.html">multi-object tracking</a>, but compute grows with the number of people in frame.</p>
+                    <p><strong>Bottom-up</strong> approaches detect every keypoint in the frame at once, then group them into people. Compute stays roughly constant regardless of crowd size, but association is harder and confidence in cluttered scenes can drop. For team sports where athletes overlap constantly, I favor the top-down path — the detector plus tracker gives me a clean identity per athlete to hang keypoints on.</p>
+
+                    <h2>Building a Real-Time Pose Model</h2>
+                    <p>The constraint I design against every day is a <strong>sub-30ms latency budget on edge hardware</strong>. That target shapes every decision: model architecture, input resolution, batch strategy and precision. I start with a lightweight backbone, train on pose-specific data, then optimize through <strong>quantization and TensorRT</strong> acceleration. FP16 gives a safe speedup; INT8 goes further when accuracy holds.</p>
+
+                    <div class="kpi-row">
+                        <div class="kpi"><strong>&lt;30ms</strong><span>Edge inference latency</span></div>
+                        <div class="kpi"><strong>+15%</strong><span>Pose accuracy boost</span></div>
+                        <div class="kpi"><strong>−40%</strong><span>Pipeline overhead cut</span></div>
+                    </div>
+
+                    <p>Preprocessing matters as much as the model. Normalization, letterboxing and the resize path can quietly eat half your budget — cutting that overhead is how I freed up time for a bigger, more accurate network. The full deployment chain — PyTorch to TorchScript or ONNX Runtime, then TensorRT — is covered in the <a href="edge-ai-inference.html">edge AI inference</a> guide.</p>
+
+                    <h2>Challenges: Occlusion &amp; Motion Blur</h2>
+                    <p>Sports footage is a worst-case scenario for pose models. Players overlap constantly, hiding joints behind bodies, and fast movement smears frames with <strong>motion blur</strong>. An occluded knee isn't visible, so the model either guesses or drops confidence — and a wrong joint silently corrupts every downstream metric.</p>
+                    <ul class="check-list">
+                        <li><strong>Confidence-aware filtering</strong> — low-confidence keypoints are flagged, not silently used.</li>
+                        <li><strong>Temporal smoothing</strong> — a lightweight filter stabilizes noisy joints across frames.</li>
+                        <li><strong>Tracking fusion</strong> — <a href="multi-object-tracking-bytetrack.html">ByteTrack</a> identity helps predict where an occluded joint will reappear.</li>
+                        <li><strong>Optical flow priors</strong> — motion estimates fill short gaps when keypoints vanish.</li>
+                    </ul>
+                    <p>None of these make occlusion invisible, but together they keep the metrics honest — which is more important than a perfect skeleton when a biomechanics report is on the line.</p>
+
+                    <h2>Where Pose Estimation is Used</h2>
+                    <p>Beyond sports, pose estimation powers fitness coaching, rehabilitation tracking, animation, AR/VR and gesture control. In the sports domain it underpins athlete tracking, form assessment, automated scoring and the biomechanical metrics coaches actually act on. If you're building one of these systems and want it to run at speed on real footage, I'd love to talk — reach out via <a href="./#contact">the contact section</a>.</p>
+                    <blockquote>“Pose estimation turns raw pixels into a readable skeleton — and a readable skeleton into a biomechanical story about how an athlete actually moves.” — Muhammad Hassan Gul</blockquote>
+                </article>
+
+                <aside class="sidebar">
+                    <div class="side-card">
+                        <h3>About Hassan</h3>
+                        <div class="side-profile">
+                            <img src="assets/img/profile.webp" alt="Muhammad Hassan Gul" width="56" height="56" loading="lazy">
+                            <div>
+                                <strong>Muhammad Hassan Gul</strong>
+                                <span>Computer Vision Engineer</span>
+                            </div>
+                        </div>
+                        <p>Islamabad, Pakistan · Open to remote &amp; relocation.</p>
+                    </div>
+                    <div class="side-card">
+                        <h3>Related Roles</h3>
+                        <div class="side-links">
+                            <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                            <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                            <a href="edge-ai-engineer.html">Edge AI Engineer</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Core Topics</h3>
+                        <div class="side-links">
+                            <a href="biomechanical-analysis.html">Biomechanical Analysis</a>
+                            <a href="pytorch-for-computer-vision.html">PyTorch for Computer Vision</a>
+                            <a href="computer-vision.html">Computer Vision Guide</a>
+                        </div>
+                    </div>
+                    <div class="side-card">
+                        <h3>Hire Hassan</h3>
+                        <p>Open to full-time, contract and consulting engagements worldwide.</p>
+                        <a href="./#contact" class="btn btn-primary btn-sm btn-block">Let's Talk</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================= RELATED ======================= -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-tag">Related</span>
+                    <h2 class="section-title">Explore related <em>topics</em></h2>
+                </div>
+                <div class="related-grid">
+                    <a class="related-card" href="pose-estimation-engineer.html">
+                        <strong>Pose Estimation Engineer</strong>
+                        <p>Sub-30ms keypoint models that read human motion in real time for sports and biomechanics.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="biomechanical-analysis.html">
+                        <strong>Biomechanical Analysis</strong>
+                        <p>How joint angles and movement patterns become metrics coaches can actually act on.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="sports-analytics.html">
+                        <strong>Sports Analytics with Computer Vision</strong>
+                        <p>Turning raw match footage into athlete performance data with vision models.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="pytorch-for-computer-vision.html">
+                        <strong>PyTorch for Computer Vision</strong>
+                        <p>Building and training vision models end-to-end with the PyTorch ecosystem.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="computer-vision.html">
+                        <strong>What is Computer Vision?</strong>
+                        <p>A practical introduction to how machines see, detect, track and understand visual data.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                    <a class="related-card" href="edge-ai-inference.html">
+                        <strong>Edge AI Inference</strong>
+                        <p>Optimizing models with TensorRT and ONNX Runtime to run at streaming speed on-device.</p>
+                        <span class="more">Read more →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Building a pose estimation system?</h2>
+                        <p>Tell me about your latency targets and camera setup — I'll help you design and ship sub-30ms keypoint models.</p>
+                    </div>
+                    <a href="mailto:muhammadhassangul01@gmail.com" class="btn btn-primary">Email Hassan</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="./" class="logo">
+                    <span class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-7 4 14 3-9 2 2h6"/></svg>
+                    </span>
+                    <span class="logo-text">hassan<span class="logo-dot">.</span>gul</span>
+                </a>
+                <p class="footer-tagline">Computer Vision Engineer &amp; AI Specialist. Building machines that see, track and understand human performance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="./#about">About</a>
+                <a href="computer-vision-engineer.html">Computer Vision Engineer</a>
+                <a href="pose-estimation-engineer.html">Pose Estimation Engineer</a>
+                <a href="sports-analytics-engineer.html">Sports Analytics Engineer</a>
+                <a href="resume.html">Resume &amp; CV</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:muhammadhassangul01@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/its-muhammad-hassan" target="_blank" rel="me noopener">LinkedIn</a>
+                <a href="https://github.com/muhammadhassangul01" target="_blank" rel="me noopener">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Islamabad, Pakistan</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> Muhammad Hassan Gul. All rights reserved.</p>
+            <a href="#top" class="back-top" id="backTop" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="assets/js/pages.js" defer></script>
+</body>
+</html>
